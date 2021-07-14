@@ -1,0 +1,79 @@
+{
+    "name": "linuxforphp/linuxforcomposer",
+    "description": "A Composer interface to run 'Linux for PHP' Docker containers, Dockerfiles or docker-compose files.",
+    "single": {
+        "image": {
+            "linuxforcomposer": {
+                "php-versions": [
+                    "7.4"
+                ],
+                "script": [
+                    "lfphp-get --force node.js-10",
+                    "npm update -g",
+                    "composer self-update",
+                    "cd /srv/tempo",
+                    "chmod -R 775 private/",
+                    "chmod -R 775 repository/",
+                    "cp -f configuration_sample.php configuration.php",
+                    "composer install",
+                    "cd /srv",
+                    "mv www www.OLD",
+                    "ln -s tempo/dist www",
+                    "groupadd vagrant",
+                    "useradd -p 'vagrant' -g vagrant vagrant",
+                    "cp -rf /etc/skel /home/vagrant",
+                    "chown -R vagrant:vagrant /home/vagrant",
+                    "echo 'vagrant:vagrant' | chpasswd",
+                    "chown -R vagrant:apache tempo",
+                    "cd tempo",
+                    "npm install",
+                    "npm run build",
+                    "cd /srv",
+                    "chown -R vagrant:apache tempo",
+                    "lfphp --phpfpm --apache"
+                ],
+                "thread-safe": "false"
+            },
+            "dockerfile": {
+                "url": "",
+                "container-name": "",
+                "username": "",
+                "token": ""
+            }
+        },
+        "containers": {
+            "modes": {
+                "mode1": "detached",
+                "mode2": "interactive",
+                "mode3": "tty"
+            },
+            "ports": {
+                "port1": [
+                    "8181:80"
+                ]
+            },
+            "volumes": {
+                "volume1": "${PWD}/:/srv/tempo"
+            },
+            "persist-data": {
+                "mount": "false",
+                "root-name": "",
+                "directories": {
+                    "directory1": "",
+                    "directory2": "",
+                    "directory3": ""
+                }
+            }
+        }
+    },
+    "docker-compose": {
+        "url": "",
+        "username": "",
+        "token": ""
+    },
+    "lfphp-cloud": {
+        "account": "",
+        "username": "",
+        "token": ""
+    }
+}
