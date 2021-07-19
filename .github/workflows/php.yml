@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
         php-version: ['7.2', '7.3', '7.4', '8.0']
 
@@ -22,16 +23,19 @@ jobs:
         extensions: mbstring, zip, sqlite3, filter
         coverage: xdebug
 
-    - name: Install dependencies
+    - name: Clear Composer Lock File
+      run: rm composer.lock
+
+    - name: Install Dependencies
       run: composer install --no-interaction
 
     - name: Copy configuration.php
       run: cp configuration_sample.php configuration.php
 
-    - name: Execute tests
+    - name: Execute Tests
       run: XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-clover=coverage.xml
 
-    - name: Upload coverage to Codecov
+    - name: Upload Coverage to Codecov
       uses: codecov/codecov-action@v1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}

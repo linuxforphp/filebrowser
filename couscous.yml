@@ -1,22 +1,22 @@
 include:
     - docs
 
-cname: docs.filegator.io
+cname: filebrowser.linuxforphp.net
 
 branch: gh-pages
 
-title: FileGator - Documentation
-titleShort: FileGator
+title: FileBrowser - Documentation
+titleShort: FileBrowser
 subTitle: Documentation
 
-baseUrl: https://docs.filegator.io
+baseUrl: https://filebrowser.linuxforphp.net
 
 template:
     directory: docs/template/
 
 github:
-    user: filegator
-    repo: filegator
+    user: filebrowser
+    repo: filebrowser
 
 menu:
     sections:
@@ -24,7 +24,7 @@ menu:
             name: Getting Started
             items:
                 home:
-                    text: What is FileGator
+                    text: What is FileBrowser
                     relativeUrl: index.html
                 install:
                     text: Installation

@@ -1,19 +1,20 @@
 <?php
 
 /*
- * This file is part of the FileGator package.
+ * This file is part of the FileBrowser package.
  *
- * (c) Milos Stojanovic <alcalbg@gmail.com>
+ * Copyright 2021, Foreach Code Factory <services@etista.com>
+ * Copyright 2018-2021, Milos Stojanovic <alcalbg@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE file
  */
 
-namespace Filegator\Services\Security;
+namespace Filebrowser\Services\Security;
 
-use Filegator\Kernel\Request;
-use Filegator\Kernel\Response;
-use Filegator\Services\Service;
-use Filegator\Services\Logger\LoggerInterface;
+use Filebrowser\Kernel\Request;
+use Filebrowser\Kernel\Response;
+use Filebrowser\Services\Service;
+use Filebrowser\Services\Logger\LoggerInterface;
 use Symfony\Component\Security\Csrf\CsrfToken;
 use Symfony\Component\Security\Csrf\CsrfTokenManager;
 

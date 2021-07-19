@@ -1,21 +1,22 @@
 <?php
 
 /*
- * This file is part of the FileGator package.
+ * This file is part of the FileBrowser package.
  *
- * (c) Milos Stojanovic <alcalbg@gmail.com>
+ * Copyright 2021, Foreach Code Factory <services@etista.com>
+ * Copyright 2018-2021, Milos Stojanovic <alcalbg@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE file
  */
 
-namespace Filegator\Services\Auth\Adapters;
+namespace Filebrowser\Services\Auth\Adapters;
 
-use Filegator\Services\Auth\AuthInterface;
-use Filegator\Services\Auth\User;
-use Filegator\Services\Auth\UsersCollection;
-use Filegator\Services\Service;
-use Filegator\Services\Session\SessionStorageInterface as Session;
-use Filegator\Utils\PasswordHash;
+use Filebrowser\Services\Auth\AuthInterface;
+use Filebrowser\Services\Auth\User;
+use Filebrowser\Services\Auth\UsersCollection;
+use Filebrowser\Services\Service;
+use Filebrowser\Services\Session\SessionStorageInterface as Session;
+use Filebrowser\Utils\PasswordHash;
 
 class JsonFile implements Service, AuthInterface
 {

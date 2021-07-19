@@ -1,28 +1,53 @@
 <?php
 
 return [
-    'public_path' => '',
-    'public_dir' => __DIR__.'/../../dist',
+    'auth_file' => APP_ROOT_DIR . DIR_SEP . 'private' . DIR_SEP . 'users.json',
+    'routes_file' => APP_ROOT_DIR . DIR_SEP . 'config' . DIR_SEP . 'routes.config.php',
+    'routes_optional_file' => APP_ROOT_DIR . DIR_SEP . 'config' . DIR_SEP . 'routes.optional.config.php',
+    'public_path' => APP_PUBLIC_PATH,
+    'public_dir' => APP_PUBLIC_DIR,
+    'tmpfs_path' => TEST_TMP_PATH,
+    'log_file' => APP_ROOT_DIR . DIR_SEP . 'private' . DIR_SEP . 'logs' . DIR_SEP . 'app.log',
     'overwrite_on_upload' => false,
     'timezone' => 'UTC', // https://www.php.net/manual/en/timezones.php
-    'download_inline' => ['pdf'],
+    'download_inline' => ['pdf'], // download inline in the browser, array of extensions, use * for all
 
     'frontend_config' => [
-        'app_name' => 'FileGator',
+        'app_name' => 'FileBrowser',
+        'app_version' => APP_VERSION,
         'language' => 'english',
-        'logo' => 'https://via.placeholder.com/263x55.png',
-        'upload_max_size' => 2 * 1024 * 1024,
-        'upload_chunk_size' => 1 * 1024 * 1024,
+        'logo' => 'https://linuxforphp.com/img/logo.svg',
+        'upload_max_size' => 2 * 1024 * 1024, // 1MB
+        'upload_chunk_size' => 1 * 1024 * 1024, // 1MB
         'upload_simultaneous' => 3,
         'default_archive_name' => 'archive.zip',
         'editable' => ['.txt', '.css', '.js', '.ts', '.html', '.php', '.json', '.md'],
-        'date_format' => 'YY/MM/DD hh:mm:ss',
+        'date_format' => 'YY/MM/DD hh:mm:ss', // see: https://momentjs.com/docs/#/displaying/format/
         'guest_redirection' => '', // useful for external auth adapters
+        'search_simultaneous' => 5,
+        'filter_entries' => [],
+    ],
+
+    // Choose one of the following
+    'storage' => [
+        'driver' => [
+            'type' => 'local', //local filesystem
+            'config' => [
+                'separator' => '/',
+                'config' => [],
+                'adapter' => function () {
+                    return new \League\Flysystem\Adapter\Local(
+                        REPOSITORY_ROOT
+                    );
+                },
+            ],
+            'fastzip' => false // LOCAL ONLY! If true, it will override the \League\Flysystem\Adapter\Local adapter, and use the zip and unzip binaries directly.
+        ],
     ],
 
     'services' => [
-        'Filegator\Services\Logger\LoggerInterface' => [
-            'handler' => '\Filegator\Services\Logger\Adapters\MonoLogger',
+        'Filebrowser\Services\Logger\LoggerInterface' => [
+            'handler' => '\Filebrowser\Services\Logger\Adapters\MonoLogger',
             'config' => [
                 'monolog_handlers' => [
                     function () {
@@ -31,31 +56,31 @@ return [
                 ],
             ],
         ],
-        'Filegator\Services\Session\SessionStorageInterface' => [
-            'handler' => '\Filegator\Services\Session\Adapters\SessionStorage',
+        'Filebrowser\Services\Session\SessionStorageInterface' => [
+            'handler' => '\Filebrowser\Services\Session\Adapters\SessionStorage',
             'config' => [
                 'handler' => function () {
                     return new \Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage();
                 },
             ],
         ],
-        'Filegator\Services\Tmpfs\TmpfsInterface' => [
-            'handler' => '\Filegator\Services\Tmpfs\Adapters\Tmpfs',
+        'Filebrowser\Services\Tmpfs\TmpfsInterface' => [
+            'handler' => '\Filebrowser\Services\Tmpfs\Adapters\Tmpfs',
             'config' => [
                 'path' => TEST_TMP_PATH,
                 'gc_probability_perc' => 10,
                 'gc_older_than' => 60 * 60 * 24 * 2, // 2 days
             ],
         ],
-        'Filegator\Services\View\ViewInterface' => [
-            'handler' => '\Filegator\Services\View\Adapters\Vuejs',
+        'Filebrowser\Services\View\ViewInterface' => [
+            'handler' => '\Filebrowser\Services\View\Adapters\Vuejs',
             'config' => [
                 'add_to_head' => '',
                 'add_to_body' => '',
             ],
         ],
-        'Filegator\Services\Storage\Filesystem' => [
-            'handler' => '\Filegator\Services\Storage\Filesystem',
+        'Filebrowser\Services\Storage\Filesystem' => [
+            'handler' => '\Filebrowser\Services\Storage\Filesystem',
             'config' => [
                 'separator' => '/',
                 'adapter' => function () {
@@ -65,18 +90,24 @@ return [
                 },
             ],
         ],
-        'Filegator\Services\Auth\AuthInterface' => [
+        'Filebrowser\Services\Auth\AuthInterface' => [
             'handler' => '\Tests\MockUsers',
         ],
-        'Filegator\Services\Archiver\ArchiverInterface' => [
-            'handler' => '\Filegator\Services\Archiver\Adapters\ZipArchiver',
+        'Filebrowser\Services\Archiver\ArchiverInterface' => [
+            'handler' => '\Filebrowser\Services\Archiver\Adapters\ZipArchiver',
             'config' => [],
         ],
-        'Filegator\Services\Router\Router' => [
-            'handler' => '\Filegator\Services\Router\Router',
+        'Filebrowser\Services\Process\SymfonyProcessFactory' => [
+            'handler' => '\Filebrowser\Services\Process\SymfonyProcessFactory',
+            'config' => [],
+        ],
+        'Filebrowser\Services\Router\Router' => [
+            'handler' => '\Filebrowser\Services\Router\Router',
             'config' => [
                 'query_param' => 'r',
-                'routes_file' => __DIR__.'/../../backend/Controllers/routes.php',
+                'routes_file' => APP_ROOT_DIR . DIR_SEP . 'tests' . DIR_SEP . 'config' . DIR_SEP . 'testroutes.php',
+                'routes_optional_file' => APP_ROOT_DIR . DIR_SEP . 'tests' . DIR_SEP . 'config' . DIR_SEP . 'testroutesoptional.php',
+                'fastzip' => false
             ],
         ],
     ],

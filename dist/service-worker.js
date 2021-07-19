@@ -17,7 +17,7 @@ importScripts(
   "/precache-manifest.027df767f4c4fdf5651329516a7a6123.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "filegator"});
+workbox.core.setCacheNameDetails({prefix: "filebrowser"});
 
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to

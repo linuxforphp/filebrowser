@@ -1,9 +1,10 @@
 <?php
 
 /*
- * This file is part of the FileGator package.
+ * This file is part of the FileBrowser package.
  *
- * (c) Milos Stojanovic <alcalbg@gmail.com>
+ * Copyright 2021, Foreach Code Factory <services@etista.com>
+ * Copyright 2018-2021, Milos Stojanovic <alcalbg@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE file
  */
@@ -577,6 +578,29 @@ class FilesTest extends TestCase
         $this->assertFileExists(TEST_REPOSITORY.'/jane/compressed2.zip');
     }
 
+    public function testZipInvalidFilesThrowsException()
+    {
+        $username = 'admin@example.com';
+        $this->signIn($username, 'admin123');
+
+        $items = [
+            0 => [
+                'type' => 'file',
+                'path' => '/missin.txt',
+                'name' => 'missina.txt',
+                'time' => $this->timestamp,
+            ],
+        ];
+
+        $this->expectException(Exception::class);
+
+        $this->sendRequest('POST', '/zipitems', [
+            'name' => 'compressed.zip',
+            'items' => $items,
+            'destination' => '/',
+        ]);
+    }
+
     public function testUnzipArchive()
     {
         $username = 'admin@example.com';
@@ -596,6 +620,19 @@ class FilesTest extends TestCase
         $this->assertFileExists(TEST_REPOSITORY.'/jane/two.txt');
         $this->assertDirectoryExists(TEST_REPOSITORY.'/jane/onetwo');
         $this->assertFileExists(TEST_REPOSITORY.'/jane/onetwo/three.txt');
+    }
+
+    public function testUnzipInvalidFileThrowsException()
+    {
+        $username = 'admin@example.com';
+        $this->signIn($username, 'admin123');
+
+        $this->expectException(Exception::class);
+
+        $this->sendRequest('POST', '/unzipitem', [
+            'item' => '/jane/missin.zip',
+            'destination' => '/jane',
+        ]);
     }
 
     public function testDownloadMultipleItems()
@@ -646,6 +683,33 @@ class FilesTest extends TestCase
         $this->assertEquals('attachment; filename=archive.zip', $headers->get('content-disposition'));
         $this->assertEquals('binary', $headers->get('content-transfer-encoding'));
         $this->assertEquals(414, $headers->get('content-length'));
+    }
+
+    public function testDownloadMultipleItemsInvalidFilesReturnsErrorOutput()
+    {
+        $username = 'john@example.com';
+        $this->signIn($username, 'john123');
+
+        $items = [
+            0 => [
+                'type' => 'dir',
+                'path' => '/missin/missinsub',
+                'name' => 'missinsub',
+                'time' => $this->timestamp,
+            ],
+            1 => [
+                'type' => 'file',
+                'path' => '/missin/fail.txt',
+                'name' => 'fail.txt',
+                'time' => $this->timestamp,
+            ],
+        ];
+
+        $this->expectException(Exception::class);
+
+        $this->sendRequest('POST', '/batchdownload', [
+            'items' => $items,
+        ]);
     }
 
     public function testUpdateFileContent()

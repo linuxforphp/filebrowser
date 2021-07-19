@@ -1,21 +1,22 @@
 <?php
 
 /*
- * This file is part of the FileGator package.
+ * This file is part of the FileBrowser package.
  *
- * (c) Milos Stojanovic <alcalbg@gmail.com>
+ * Copyright 2021, Foreach Code Factory <services@etista.com>
+ * Copyright 2018-2021, Milos Stojanovic <alcalbg@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE file
  */
 
-namespace Filegator\Controllers;
+namespace Filebrowser\Controllers;
 
-use Filegator\Config\Config;
-use Filegator\Kernel\Request;
-use Filegator\Kernel\Response;
-use Filegator\Services\Auth\AuthInterface;
-use Filegator\Services\Storage\Filesystem;
-use Filegator\Services\Tmpfs\TmpfsInterface;
+use Filebrowser\Config\Config;
+use Filebrowser\Kernel\Request;
+use Filebrowser\Kernel\Response;
+use Filebrowser\Services\Auth\AuthInterface;
+use Filebrowser\Services\Storage\Filesystem;
+use Filebrowser\Services\Tmpfs\TmpfsInterface;
 
 class UploadController
 {

@@ -1,6 +1,6 @@
 {
-  "name": "filegator",
-  "short_name": "filegator",
+  "name": "filebrowser",
+  "short_name": "filebrowser",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",

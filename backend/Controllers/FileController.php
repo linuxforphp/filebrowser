@@ -1,22 +1,24 @@
 <?php
 
 /*
- * This file is part of the FileGator package.
+ * This file is part of the FileBrowser package.
  *
- * (c) Milos Stojanovic <alcalbg@gmail.com>
+ * Copyright 2021, Foreach Code Factory <services@etista.com>
+ * Copyright 2018-2021, Milos Stojanovic <alcalbg@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE file
  */
 
-namespace Filegator\Controllers;
+namespace Filebrowser\Controllers;
 
-use Filegator\Config\Config;
-use Filegator\Kernel\Request;
-use Filegator\Kernel\Response;
-use Filegator\Services\Archiver\ArchiverInterface;
-use Filegator\Services\Auth\AuthInterface;
-use Filegator\Services\Session\SessionStorageInterface as Session;
-use Filegator\Services\Storage\Filesystem;
+use Filebrowser\Config\Config;
+use Filebrowser\Kernel\Request;
+use Filebrowser\Kernel\Response;
+use Filebrowser\Services\Archiver\ArchiverInterface;
+use Filebrowser\Services\Auth\AuthInterface;
+use Filebrowser\Services\Process\SymfonyProcessFactory;
+use Filebrowser\Services\Session\SessionStorageInterface as Session;
+use Filebrowser\Services\Storage\Filesystem;
 
 class FileController
 {
@@ -140,6 +142,73 @@ class FileController
         $destination = $request->input('destination', $this->separator);
 
         $archiver->uncompress($source, $destination, $this->storage);
+
+        return $response->json('Done');
+    }
+
+    public function zipItemsProc(Request $request, Response $response, SymfonyProcessFactory $serviceFactory)
+    {
+        $pathPrefix = REPOSITORY_ROOT;
+        $pathPrefix .= $this->storage->getPathPrefix() === '/' ? '' : $this->storage->getPathPrefix();
+
+        $items = $request->input('items', []);
+        $destination = $request->input('destination', $this->separator);
+        $destination = $destination === '/' ? $destination : $destination . DIR_SEP;
+        $name = $request->input('name', $this->config->get('frontend_config.default_archive_name'));
+
+        $command[] = '/usr/bin/zip';
+        $command[] = '-r';
+        $command[] = $pathPrefix . $destination . $name;
+
+        foreach ($items as $item) {
+            $command[] = substr($item->path, 1, strlen($item->path));
+        }
+
+        $archiverProcess = $serviceFactory->createService($command);
+
+        $archiverProcess->setWorkingDirectory($pathPrefix);
+
+        $archiverProcess->start();
+
+        while ($archiverProcess->isRunning()) {
+            // waiting for process to finish
+        }
+
+        // executes after the command finishes
+        if (!$archiverProcess->isSuccessful()) {
+            //throw new ProcessFailedException($process);
+            return $response->json('Could not create the zip file');
+        }
+
+        return $response->json('Done');
+    }
+
+    public function unzipItemProc(Request $request, Response $response, SymfonyProcessFactory $serviceFactory)
+    {
+        $pathPrefix = REPOSITORY_ROOT;
+        $pathPrefix .= $this->storage->getPathPrefix() === '/' ? '' : $this->storage->getPathPrefix();
+
+        $source = $request->input('item');
+        $destination = $request->input('destination', $this->separator);
+
+        $command[] = '/usr/bin/unzip';
+        $command[] = $pathPrefix . $source;
+        $command[] = '-d';
+        $command[] = $pathPrefix . $destination;
+
+        $archiverProcess = $serviceFactory->createService($command);
+
+        $archiverProcess->start();
+
+        while ($archiverProcess->isRunning()) {
+            // waiting for process to finish
+        }
+
+        // executes after the command finishes
+        if (!$archiverProcess->isSuccessful()) {
+            //throw new ProcessFailedException($process);
+            return $response->json('Could not unzip the file');
+        }
 
         return $response->json('Done');
     }

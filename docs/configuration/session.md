@@ -9,8 +9,8 @@ Session handling is provided through the Symfony's [HttpFoundation](https://symf
 Default session handler will user PHP's built in file storage. You can also specify your own `$save_path` to store session files.
 
 ```
-        'Filegator\Services\Session\SessionStorageInterface' => [
-            'handler' => '\Filegator\Services\Session\Adapters\SessionStorage',
+        'Filebrowser\Services\Session\SessionStorageInterface' => [
+            'handler' => '\Filebrowser\Services\Session\Adapters\SessionStorage',
             'config' => [
                 'handler' => function () {
                     $save_path = null; // use default system path
@@ -38,12 +38,12 @@ CREATE TABLE `sessions` (
 Then, open `configuration.php` and update Session handler to:
 
 ```
-        'Filegator\Services\Session\SessionStorageInterface' => [
-            'handler' => '\Filegator\Services\Session\Adapters\SessionStorage',
+        'Filebrowser\Services\Session\SessionStorageInterface' => [
+            'handler' => '\Filebrowser\Services\Session\Adapters\SessionStorage',
             'config' => [
                 'handler' => function () {
                     $handler = new \Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler(
-                            'mysql://root:password@localhost:3306/filegator'
+                            'mysql://root:password@localhost:3306/filebrowser'
                             );
 
                     return new \Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage([], $handler);
@@ -59,8 +59,8 @@ Don't forget to enter correct database details.
 You must require additional [predis](https://github.com/nrk/predis/) library `composer require predis/predis`
 
 ```
-        'Filegator\Services\Session\SessionStorageInterface' => [
-            'handler' => '\Filegator\Services\Session\Adapters\SessionStorage',
+        'Filebrowser\Services\Session\SessionStorageInterface' => [
+            'handler' => '\Filebrowser\Services\Session\Adapters\SessionStorage',
             'config' => [
                 'handler' => function () {
                     $predis = new \Predis\Client('tcp://127.0.0.1:6379');
@@ -77,12 +77,12 @@ You must require additional [predis](https://github.com/nrk/predis/) library `co
 The underying [session component](https://github.com/symfony/symfony/blob/4.4/src/Symfony/Component/HttpFoundation/Session/Storage/NativeSessionStorage.php) accepts array of options.
 For example you can pass `cookie_lifetime` parameter to extend default session lifetime:
 ```
-        'Filegator\Services\Session\SessionStorageInterface' => [
-            'handler' => '\Filegator\Services\Session\Adapters\SessionStorage',
+        'Filebrowser\Services\Session\SessionStorageInterface' => [
+            'handler' => '\Filebrowser\Services\Session\Adapters\SessionStorage',
             'config' => [
                 'handler' => function () {
                     $handler = new \Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler(
-                            'mysql://root:password@localhost:3306/filegator'
+                            'mysql://root:password@localhost:3306/filebrowser'
                             );
 
                     return new \Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage([

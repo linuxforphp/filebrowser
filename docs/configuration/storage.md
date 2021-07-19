@@ -15,8 +15,8 @@ Note: Some adapters do not support folder operations or their support is limited
 With default adapter you just need to configure where your `repository` folder is. This folder will serve as a root for everything else.
 
 ```
-        'Filegator\Services\Storage\Filesystem' => [
-            'handler' => '\Filegator\Services\Storage\Filesystem',
+        'Filebrowser\Services\Storage\Filesystem' => [
+            'handler' => '\Filebrowser\Services\Storage\Filesystem',
             'config' => [
                 'separator' => '/',
                 'config' => [],
@@ -36,8 +36,8 @@ See official [documentation](https://flysystem.thephpleague.com/v1/docs/adapter/
 Sample configuration:
 
 ```
-        'Filegator\Services\Storage\Filesystem' => [
-            'handler' => '\Filegator\Services\Storage\Filesystem',
+        'Filebrowser\Services\Storage\Filesystem' => [
+            'handler' => '\Filebrowser\Services\Storage\Filesystem',
             'config' => [
                 'separator' => '/',
                 'config' => [],
@@ -63,8 +63,8 @@ For more advanced options like using your private key or changing the document r
 Sample configuration:
 
 ```
-        'Filegator\Services\Storage\Filesystem' => [
-            'handler' => '\Filegator\Services\Storage\Filesystem',
+        'Filebrowser\Services\Storage\Filesystem' => [
+            'handler' => '\Filebrowser\Services\Storage\Filesystem',
             'config' => [
                 'separator' => '/',
                 'config' => [],
@@ -89,8 +89,8 @@ See official [documentation](https://flysystem.thephpleague.com/v1/docs/adapter/
 Sample configuration:
 
 ```
-        'Filegator\Services\Storage\Filesystem' => [
-            'handler' => '\Filegator\Services\Storage\Filesystem',
+        'Filebrowser\Services\Storage\Filesystem' => [
+            'handler' => '\Filebrowser\Services\Storage\Filesystem',
             'config' => [
                 'separator' => '/',
                 'config' => [
@@ -115,8 +115,8 @@ See official [documentation](https://flysystem.thephpleague.com/v1/docs/adapter/
 Sample configuration:
 
 ```
-        'Filegator\Services\Storage\Filesystem' => [
-            'handler' => '\Filegator\Services\Storage\Filesystem',
+        'Filebrowser\Services\Storage\Filesystem' => [
+            'handler' => '\Filebrowser\Services\Storage\Filesystem',
             'config' => [
                 'separator' => '/',
                 'config' => [],
@@ -147,8 +147,8 @@ See official [documentation](https://flysystem.thephpleague.com/v1/docs/adapter/
 Sample configuration:
 
 ```
-        'Filegator\Services\Storage\Filesystem' => [
-            'handler' => '\Filegator\Services\Storage\Filesystem',
+        'Filebrowser\Services\Storage\Filesystem' => [
+            'handler' => '\Filebrowser\Services\Storage\Filesystem',
             'config' => [
                 'separator' => '/',
                 'config' => [],
@@ -177,8 +177,8 @@ See official [documentation](https://flysystem.thephpleague.com/v1/docs/adapter/
 Sample configuration:
 
 ```
-        'Filegator\Services\Storage\Filesystem' => [
-            'handler' => '\Filegator\Services\Storage\Filesystem',
+        'Filebrowser\Services\Storage\Filesystem' => [
+            'handler' => '\Filebrowser\Services\Storage\Filesystem',
             'config' => [
                 'separator' => '/',
                 'config' => [],
@@ -207,8 +207,8 @@ See official [documentation](https://flysystem.thephpleague.com/v1/docs/adapter/
 Sample configuration:
 
 ```
-        'Filegator\Services\Storage\Filesystem' => [
-            'handler' => '\Filegator\Services\Storage\Filesystem',
+        'Filebrowser\Services\Storage\Filesystem' => [
+            'handler' => '\Filebrowser\Services\Storage\Filesystem',
             'config' => [
                 'separator' => '/',
                 'config' => [

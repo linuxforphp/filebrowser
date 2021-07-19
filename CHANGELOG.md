@@ -1,7 +1,15 @@
-# Changelog
+# CHANGELOG
 
-## Upcoming...
+## 8.0.0 - 2021-07-19
 
+* Adds new proxy methods in the FileController and the DownloadController.
+* Proxies requests to Symfony Process objects to zip and unzip files.
+* Updates the app's configuration scheme.
+* Updates the unit and functional tests accordingly.
+* Relocates some configuration files to be consistent with the project's structure.
+* Updates the project's dependencies.
+* Updates the GitHub test matrix.
+    
 ## 7.6.0 - 2021-07-12
 
 * Better search with configurable simultaneous search limit, fixes #234
@@ -87,7 +95,7 @@
 * WordPress Auth adapter is now included in the main repo
 * New config: 'guest_redirection' (useful for external auth adapters)
 * More css classes so the elements can be easily hidden (e.g. add_to_head style)
-* Integrated https://github.com/filegator/filegator/pull/74
+* Integrated https://github.com/linuxforphp/filebrowser/pull/74
 * Updated docs
 
 ## 7.3.5 - 2020-04-18

@@ -1,19 +1,20 @@
 <?php
 
 /*
- * This file is part of the FileGator package.
+ * This file is part of the FileBrowser package.
  *
- * (c) Milos Stojanovic <alcalbg@gmail.com>
+ * Copyright 2021, Foreach Code Factory <services@etista.com>
+ * Copyright 2018-2021, Milos Stojanovic <alcalbg@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE file
  */
 
-namespace Filegator\Services\Session\Adapters;
+namespace Filebrowser\Services\Session\Adapters;
 
-use Filegator\Kernel\Request;
-use Filegator\Services\Service;
-use Filegator\Services\Session\Session;
-use Filegator\Services\Session\SessionStorageInterface;
+use Filebrowser\Kernel\Request;
+use Filebrowser\Services\Service;
+use Filebrowser\Services\Session\Session;
+use Filebrowser\Services\Session\SessionStorageInterface;
 
 class SessionStorage implements Service, SessionStorageInterface
 {
@@ -32,7 +33,7 @@ class SessionStorage implements Service, SessionStorageInterface
         if (! $this->getSession()) {
             $handler = $config['handler'];
             $session = new Session($handler());
-            $session->setName('filegator');
+            $session->setName('filebrowser');
 
             $this->setSession($session);
         }

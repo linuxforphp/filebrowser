@@ -11,8 +11,8 @@ Simple security service is included in the script by default. This service provi
 - IP deny list
 
 ```
-        'Filegator\Services\Security\Security' => [
-            'handler' => '\Filegator\Services\Security\Security',
+        'Filebrowser\Services\Security\Security' => [
+            'handler' => '\Filebrowser\Services\Security\Security',
             'config' => [
                 'csrf_protection' => true,
                 'csrf_key' => "123456", // randomize this

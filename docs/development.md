@@ -7,8 +7,8 @@ currentMenu: development
 You must have `git`, `php`, `npm`, and `composer` installed.
 
 ```
-git clone https://github.com/filegator/filegator.git
-cd filegator
+git clone https://github.com/linuxforphp/filebrowser.git
+cd filebrowser
 cp configuration_sample.php configuration.php
 chmod -R 775 private/
 chmod -R 775 repository/

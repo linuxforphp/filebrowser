@@ -1,29 +1,37 @@
 <?php
 
 /*
- * This file is part of the FileGator package.
+ * This file is part of the FileBrowser package.
  *
- * (c) Milos Stojanovic <alcalbg@gmail.com>
+ * Copyright 2021, Foreach Code Factory <services@etista.com>
+ * Copyright 2018-2021, Milos Stojanovic <alcalbg@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE file
  */
 
 namespace Tests;
 
-use Filegator\App;
-use Filegator\Config\Config;
-use Filegator\Container\Container;
-use Filegator\Kernel\Request;
-use Filegator\Kernel\Response;
-use Filegator\Kernel\StreamedResponse;
-use Filegator\Services\Session\Session;
+use Filebrowser\App;
+use Filebrowser\Config\Config;
+use Filebrowser\Container\Container;
+use Filebrowser\Kernel\Request;
+use Filebrowser\Kernel\Response;
+use Filebrowser\Kernel\StreamedResponse;
+use Filebrowser\Services\Session\Session;
 use PHPUnit\Framework\TestCase as BaseTestCase;
 use Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage;
+
+define('DIR_SEP', DIRECTORY_SEPARATOR);
+define('APP_PUBLIC_PATH', '');
+define('APP_PUBLIC_DIR', __DIR__);
+define('APP_ROOT_DIR', dirname(dirname(__DIR__)));
+define('APP_VERSION', '7.6.0');
 
 define('APP_ENV', 'test');
 
 define('TEST_DIR', __DIR__.'/tmp');
 define('TEST_REPOSITORY', TEST_DIR.'/repository');
+define('REPOSITORY_ROOT', TEST_REPOSITORY);
 define('TEST_ARCHIVE', TEST_DIR.'/testarchive.zip');
 define('TEST_FILE', TEST_DIR.'/sample.txt');
 define('TEST_TMP_PATH', TEST_DIR.'/temp/');
@@ -102,7 +110,7 @@ class TestCase extends BaseTestCase
 
     public function getMockConfig()
     {
-        $config = require __DIR__.'/configuration.php';
+        $config = require __DIR__ . DIR_SEP . 'configuration.php';
 
         return new Config($config);
     }

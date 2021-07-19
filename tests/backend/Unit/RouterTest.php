@@ -1,19 +1,20 @@
 <?php
 
 /*
- * This file is part of the FileGator package.
+ * This file is part of the FileBrowser package.
  *
- * (c) Milos Stojanovic <alcalbg@gmail.com>
+ * Copyright 2021, Foreach Code Factory <services@etista.com>
+ * Copyright 2018-2021, Milos Stojanovic <alcalbg@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE file
  */
 
 namespace Tests\Unit;
 
-use Filegator\Container\Container;
-use Filegator\Kernel\Request;
-use Filegator\Services\Auth\User;
-use Filegator\Services\Router\Router;
+use Filebrowser\Container\Container;
+use Filebrowser\Kernel\Request;
+use Filebrowser\Services\Auth\User;
+use Filebrowser\Services\Router\Router;
 use Tests\MockUsers;
 use Tests\TestCase;
 
@@ -28,7 +29,9 @@ class RouterTest extends TestCase
     {
         $this->config_stub = [
             'query_param' => 'r',
-            'routes_file' => __DIR__.'/../testroutes.php',
+            'routes_file' => __DIR__.'/../../config/testroutes.php',
+            'routes_optional_file' => __DIR__.'/../../config/testroutesoptional.php',
+            'fastzip'=> false
         ];
 
         parent::setUp();
@@ -43,7 +46,7 @@ class RouterTest extends TestCase
         $container = $this->createMock(Container::class);
         $container->expects($this->once())
             ->method('call')
-            ->with(['\Filegator\Controllers\ViewController', 'index'], [])
+            ->with(['\Filebrowser\Controllers\ViewController', 'index'], [])
         ;
 
         $this->getRouter($request, $user, $container);
@@ -58,7 +61,7 @@ class RouterTest extends TestCase
         $container = $this->createMock(Container::class);
         $container->expects($this->once())
             ->method('call')
-            ->with(['\Filegator\Controllers\AuthController', 'login'], [])
+            ->with(['\Filebrowser\Controllers\AuthController', 'login'], [])
         ;
 
         $this->getRouter($request, $user, $container);
@@ -73,7 +76,7 @@ class RouterTest extends TestCase
         $container = $this->createMock(Container::class);
         $container->expects($this->once())
             ->method('call')
-            ->with(['\Filegator\Controllers\ErrorController', 'notFound'], [])
+            ->with(['\Filebrowser\Controllers\ErrorController', 'notFound'], [])
         ;
 
         $this->getRouter($request, $user, $container);
@@ -88,7 +91,7 @@ class RouterTest extends TestCase
         $container = $this->createMock(Container::class);
         $container->expects($this->once())
             ->method('call')
-            ->with(['\Filegator\Controllers\ErrorController', 'methodNotAllowed'], [])
+            ->with(['\Filebrowser\Controllers\ErrorController', 'methodNotAllowed'], [])
         ;
 
         $this->getRouter($request, $user, $container);
@@ -103,7 +106,7 @@ class RouterTest extends TestCase
         $container = $this->createMock(Container::class);
         $container->expects($this->once())
             ->method('call')
-            ->with(['\Filegator\Controllers\ErrorController', 'notFound'], [])
+            ->with(['\Filebrowser\Controllers\ErrorController', 'notFound'], [])
         ;
 
         $this->getRouter($request, $user, $container);
@@ -135,7 +138,7 @@ class RouterTest extends TestCase
         $container = $this->createMock(Container::class);
         $container->expects($this->once())
             ->method('call')
-            ->with(['\Filegator\Controllers\ErrorController', 'notFound'], [])
+            ->with(['\Filebrowser\Controllers\ErrorController', 'notFound'], [])
         ;
 
         $this->getRouter($request, $user, $container);

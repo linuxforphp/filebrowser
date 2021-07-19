@@ -1,19 +1,20 @@
 <?php
 
 /*
- * This file is part of the FileGator package.
+ * This file is part of the FileBrowser package.
  *
- * (c) Milos Stojanovic <alcalbg@gmail.com>
+ * Copyright 2021, Foreach Code Factory <services@etista.com>
+ * Copyright 2018-2021, Milos Stojanovic <alcalbg@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE file
  */
 
-namespace Filegator\Services\Archiver\Adapters;
+namespace Filebrowser\Services\Archiver\Adapters;
 
-use Filegator\Services\Archiver\ArchiverInterface;
-use Filegator\Services\Service;
-use Filegator\Services\Storage\Filesystem as Storage;
-use Filegator\Services\Tmpfs\TmpfsInterface;
+use Filebrowser\Services\Archiver\ArchiverInterface;
+use Filebrowser\Services\Service;
+use Filebrowser\Services\Storage\Filesystem as Storage;
+use Filebrowser\Services\Tmpfs\TmpfsInterface;
 use League\Flysystem\Config as Flyconfig;
 use League\Flysystem\Filesystem as Flysystem;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
