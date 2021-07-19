@@ -41,7 +41,7 @@ return [
                     );
                 },
             ],
-            'fastzip' => false // LOCAL ONLY! If true, it will override the \League\Flysystem\Adapter\Local adapter, and use the zip and unzip binaries directly.
+            'fastzip' => true // LOCAL ONLY! If true, it will override the \League\Flysystem\Adapter\Local adapter, and use the zip and unzip binaries directly.
         ],
     ],
 
@@ -107,7 +107,7 @@ return [
                 'query_param' => 'r',
                 'routes_file' => APP_ROOT_DIR . DIR_SEP . 'tests' . DIR_SEP . 'config' . DIR_SEP . 'testroutes.php',
                 'routes_optional_file' => APP_ROOT_DIR . DIR_SEP . 'tests' . DIR_SEP . 'config' . DIR_SEP . 'testroutesoptional.php',
-                'fastzip' => false
+                'fastzip' => true
             ],
         ],
     ],

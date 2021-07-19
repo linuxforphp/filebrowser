@@ -17,6 +17,7 @@ use Filebrowser\Kernel\Response;
 use Filebrowser\Kernel\StreamedResponse;
 use Filebrowser\Services\Archiver\ArchiverInterface;
 use Filebrowser\Services\Auth\AuthInterface;
+use Filebrowser\Services\Process\SymfonyProcessFactory;
 use Filebrowser\Services\Session\SessionStorageInterface as Session;
 use Filebrowser\Services\Storage\Filesystem;
 use Filebrowser\Services\Tmpfs\TmpfsInterface;
@@ -136,6 +137,47 @@ class DownloadController
         }
 
         $archiver->closeArchive();
+
+        return $response->json(['uniqid' => $uniqid]);
+    }
+
+    public function batchDownloadCreateProc(Request $request, Response $response, TmpfsInterface $tmpfs)
+    {
+        $pathPrefix = REPOSITORY_ROOT;
+        $pathPrefix .= $this->storage->getPathPrefix() === '/' ? '' : $this->storage->getPathPrefix();
+
+        $uniqid = uniqid();
+
+        $tmpPath = $tmpfs->getFileLocation($uniqid);
+
+        $items = $request->input('items', []);
+
+        $command[] = '/usr/bin/zip';
+        $command[] = '-Ar';
+        $command[] = $tmpPath;
+
+        foreach ($items as $item) {
+            $command[] = substr($item->path, 1, strlen($item->path));
+        }
+
+        $archiverProcess = (new SymfonyProcessFactory())->createService($command);
+
+        $archiverProcess->setWorkingDirectory($pathPrefix);
+
+        $archiverProcess->start();
+
+        while ($archiverProcess->isRunning()) {
+            // waiting for process to finish
+        }
+
+        // executes after the command finishes
+        if (!$archiverProcess->isSuccessful()) {
+            //throw new ProcessFailedException($process);
+            return $response->json('Cannot batch download these files');
+        }
+
+        // close session
+        $this->session->save();
 
         return $response->json(['uniqid' => $uniqid]);
     }

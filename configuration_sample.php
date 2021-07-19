@@ -1,8 +1,17 @@
 <?php
 
+if (! defined('REPOSITORY_ROOT')) {
+    define('REPOSITORY_ROOT', APP_ROOT_DIR . DIR_SEP . 'repository');
+}
+
 return [
+    'auth_file' => APP_ROOT_DIR . DIR_SEP . 'private' . DIR_SEP . 'users.json',
+    'routes_file' => APP_ROOT_DIR . DIR_SEP . 'config' . DIR_SEP . 'routes.config.php',
+    'routes_optional_file' => APP_ROOT_DIR . DIR_SEP . 'config' . DIR_SEP . 'routes.optional.config.php',
     'public_path' => APP_PUBLIC_PATH,
     'public_dir' => APP_PUBLIC_DIR,
+    'tmpfs_path' => APP_ROOT_DIR . DIR_SEP . 'private' . DIR_SEP . 'tmp' . DIR_SEP,
+    'log_file' => APP_ROOT_DIR . DIR_SEP . 'private' . DIR_SEP . 'logs' . DIR_SEP . 'app.log',
     'overwrite_on_upload' => false,
     'timezone' => 'UTC', // https://www.php.net/manual/en/timezones.php
     'download_inline' => ['pdf'], // download inline in the browser, array of extensions, use * for all
@@ -23,92 +32,52 @@ return [
         'filter_entries' => [],
     ],
 
-    'services' => [
-        'Filebrowser\Services\Logger\LoggerInterface' => [
-            'handler' => '\Filebrowser\Services\Logger\Adapters\MonoLogger',
-            'config' => [
-                'monolog_handlers' => [
-                    function () {
-                        return new \Monolog\Handler\StreamHandler(
-                            __DIR__.'/private/logs/app.log',
-                            \Monolog\Logger::DEBUG
-                        );
-                    },
-                ],
-            ],
-        ],
-        'Filebrowser\Services\Session\SessionStorageInterface' => [
-            'handler' => '\Filebrowser\Services\Session\Adapters\SessionStorage',
-            'config' => [
-                'handler' => function () {
-                    $save_path = null; // use default system path
-                    //$save_path = __DIR__.'/private/sessions';
-                    $handler = new \Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler($save_path);
-
-                    return new \Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage([
-                            "cookie_samesite" => "Lax",
-                        ], $handler);
-                },
-            ],
-        ],
-        'Filebrowser\Services\Cors\Cors' => [
-            'handler' => '\Filebrowser\Services\Cors\Cors',
-            'config' => [
-                'enabled' => APP_ENV == 'production' ? false : true,
-            ],
-        ],
-        'Filebrowser\Services\Tmpfs\TmpfsInterface' => [
-            'handler' => '\Filebrowser\Services\Tmpfs\Adapters\Tmpfs',
-            'config' => [
-                'path' => __DIR__.'/private/tmp/',
-                'gc_probability_perc' => 10,
-                'gc_older_than' => 60 * 60 * 24 * 2, // 2 days
-            ],
-        ],
-        'Filebrowser\Services\Security\Security' => [
-            'handler' => '\Filebrowser\Services\Security\Security',
-            'config' => [
-                'csrf_protection' => true,
-                'csrf_key' => "123456", // randomize this
-                'ip_allowlist' => [],
-                'ip_denylist' => [],
-            ],
-        ],
-        'Filebrowser\Services\View\ViewInterface' => [
-            'handler' => '\Filebrowser\Services\View\Adapters\Vuejs',
-            'config' => [
-                'add_to_head' => '',
-                'add_to_body' => '',
-            ],
-        ],
-        'Filebrowser\Services\Storage\Filesystem' => [
-            'handler' => '\Filebrowser\Services\Storage\Filesystem',
+    // Choose one of the following
+    'storage' => [
+        'driver' => [
             'config' => [
                 'separator' => '/',
                 'config' => [],
                 'adapter' => function () {
                     return new \League\Flysystem\Adapter\Local(
-                        __DIR__.'/repository'
+                        REPOSITORY_ROOT
                     );
                 },
             ],
+            'fastzip' => true // LOCAL ONLY! If true, it will override the \League\Flysystem\Adapter\Local adapter, and use the zip and unzip binaries directly.
         ],
-        'Filebrowser\Services\Archiver\ArchiverInterface' => [
-            'handler' => '\Filebrowser\Services\Archiver\Adapters\ZipArchiver',
-            'config' => [],
-        ],
-        'Filebrowser\Services\Auth\AuthInterface' => [
-            'handler' => '\Filebrowser\Services\Auth\Adapters\JsonFile',
+        /*'driver' => [
             'config' => [
-                'file' => __DIR__.'/private/users.json',
+                'separator' => '/',
+                'config' => [],
+                'adapter' => function () {
+                    return new \League\Flysystem\Sftp\SftpAdapter([
+                        'host' => 'example.com',
+                        'port' => 22,
+                        'username' => 'demo',
+                        'password' => 'password',
+                        'timeout' => 10,
+                    ]);
+                },
             ],
-        ],
-        'Filebrowser\Services\Router\Router' => [
-            'handler' => '\Filebrowser\Services\Router\Router',
+        ],*/
+        /*'driver' => [
             'config' => [
-                'query_param' => 'r',
-                'routes_file' => __DIR__.'/backend/Controllers/routes.php',
+                'separator' => '/',
+                'config' => [],
+                'adapter' => function () {
+                    $client = new \Aws\S3\S3Client([
+                        'credentials' => [
+                            'key' => '123456',
+                            'secret' => 'secret123456',
+                        ],
+                        'region' => 'us-east-1',
+                        'version' => 'latest',
+                    ]);
+
+                    return new \League\Flysystem\AwsS3v3\AwsS3Adapter($client, 'my-bucket-name');
+                },
             ],
-        ],
+        ],*/
     ],
 ];

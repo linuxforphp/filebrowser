@@ -22,6 +22,9 @@
             <directory suffix=".php">./backend</directory>
             <exclude>
               <file>./backend/View.php</file>
+                <file>./config/services.config.php</file>
+                <file>./config/routes.config.php</file>
+                <file>./config/routes.optional.config.php</file>
             </exclude>
         </whitelist>
     </filter>

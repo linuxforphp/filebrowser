@@ -73,18 +73,10 @@ cd filebrowser
 cp configuration_sample.php configuration.php
 chmod -R 775 private/
 chmod -R 775 repository/
+composer install --ignore-platform-reqs
+npm install
+npm run build
 ```
-
-
-## Compiles and hot-reloads
-
-The following command will launch backend and frontend on ports 8181 and 8080:
-
-```
-npm run serve
-```
-Once everything is ready visit: `http://localhost:8080`
-
 
 ## Run tests & static analysis
 
@@ -103,10 +95,6 @@ Set the website document root to `/dist` directory. This is also known as 'publi
 
 NOTE: For security reasons `/dist` is the ONLY folder you want to be exposed through the web. Everything else should be outside of your web root, this way people can’t access any of your important files through the browser.
 
-## Show your support
-
-Please support⭐️ this repository if this project helped you!
-
 ## Security
 
 If you discover any security related issues, please email us at services@etista.com instead of using the issue tracker.
@@ -116,4 +104,4 @@ If you discover any security related issues, please email us at services@etista.
 Copyright 2021 [Foreach Code Factory](https://etista.com/).
 Copyright 2019 [Milos Stojanovic](https://github.com/alcalbg). MIT License.
 
-This project is Apache 2 licensed.
+This project is licensed under the Terms of the Apache 2.0 license.

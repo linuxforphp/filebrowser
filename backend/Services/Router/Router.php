@@ -44,7 +44,9 @@ class Router implements Service
             $uri = rawurldecode($r);
         }
 
-        $routes = require $config['routes_file'];
+        $routesBase = require $config['routes_file'];
+
+        $routes = array_merge($routesBase, require $config['routes_optional_file']);
 
         $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) use ($routes) {
             if ($routes && ! empty($routes)) {

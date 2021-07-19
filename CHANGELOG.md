@@ -1,7 +1,15 @@
-# Changelog
+# CHANGELOG
 
-## Upcoming...
+## 8.0.0 - 2021-07-19
 
+* Adds new proxy methods in the FileController and the DownloadController.
+* Proxies requests to Symfony Process objects to zip and unzip files.
+* Updates the app's configuration scheme.
+* Updates the unit and functional tests accordingly.
+* Relocates some configuration files to be consistent with the project's structure.
+* Updates the project's dependencies.
+* Updates the GitHub test matrix.
+    
 ## 7.6.0 - 2021-07-12
 
 * Better search with configurable simultaneous search limit, fixes #234
