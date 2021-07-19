@@ -11,25 +11,25 @@
                     "lfphp-get --force node.js-10",
                     "npm update -g",
                     "composer self-update",
-                    "cd /srv/tempo",
+                    "cd /srv/filebrowser",
                     "chmod -R 775 private/",
                     "chmod -R 775 repository/",
                     "cp -f configuration_sample.php configuration.php",
                     "composer install",
                     "cd /srv",
                     "mv www www.OLD",
-                    "ln -s tempo/dist www",
+                    "ln -s filebrowser/dist www",
                     "groupadd vagrant",
                     "useradd -p 'vagrant' -g vagrant vagrant",
                     "cp -rf /etc/skel /home/vagrant",
                     "chown -R vagrant:vagrant /home/vagrant",
                     "echo 'vagrant:vagrant' | chpasswd",
-                    "chown -R vagrant:apache tempo",
-                    "cd tempo",
+                    "chown -R vagrant:apache filebrowser",
+                    "cd filebrowser",
                     "npm install",
                     "npm run build",
                     "cd /srv",
-                    "chown -R vagrant:apache tempo",
+                    "chown -R vagrant:apache filebrowser",
                     "lfphp --phpfpm --apache"
                 ],
                 "thread-safe": "false"
@@ -53,7 +53,7 @@
                 ]
             },
             "volumes": {
-                "volume1": "${PWD}/:/srv/tempo"
+                "volume1": "${PWD}/:/srv/filebrowser"
             },
             "persist-data": {
                 "mount": "false",
