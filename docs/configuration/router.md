@@ -22,7 +22,7 @@ Routes file is located here `backend/Controllers/routes.php` Each route in the r
 ```
     [
         'route' => [
-            'GET', '/download/{path_encoded}', '\Filegator\Controllers\DownloadController@download',
+            'GET', '/download/{path_encoded}', '\Filebrowser\Controllers\DownloadController@download',
         ],
         'roles' => [
             'guest', 'user', 'admin',
@@ -37,7 +37,7 @@ As you can see in the example, you can assign required user roles and permission
 
 ## Controllers
 
-Since FileGator is using an awesome dependency injection [container](https://github.com/PHP-DI/PHP-DI) you can type-hint dependencies directly in your controllers. 
+Since FileBrowser is using an awesome dependency injection [container](https://github.com/PHP-DI/PHP-DI) you can type-hint dependencies directly in your controllers. 
 
 You can also mix route parameters and dependencies in any order like in this example:
 

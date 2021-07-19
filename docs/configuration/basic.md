@@ -13,10 +13,10 @@ Note: if you've made a mistake in configuration file (forgot to close a quote?) 
 
 ```
     'frontend_config' => [
-        'app_name' => 'FileGator',
+        'app_name' => 'FileBrowser',
         'app_version' => APP_VERSION,
         'language' => 'english',
-        'logo' => 'https://raw.githubusercontent.com/filegator/filegator/master/dist/img/logo.png',
+        'logo' => 'https://raw.githubusercontent.com/linuxforphp/filebrowser/master/dist/img/logo.png',
         'upload_max_size' => 100 * 1024 * 1024, // 100MB
         'upload_chunk_size' => 1 * 1024 * 1024, // 1MB
         'upload_simultaneous' => 3,
@@ -26,10 +26,10 @@ Note: if you've made a mistake in configuration file (forgot to close a quote?) 
         'guest_redirection' => '', // useful for external auth adapters
         'search_simultaneous' => 5, // how many simultaneous getdirs to spawn when searching
 
-        // filter starts with separator => full path has to match, example: '/all/one/filegator/demo.txt'
+        // filter starts with separator => full path has to match, example: '/all/one/filebrowser/demo.txt'
         // filter ends with separator => filter only folders (a file with the same name will be shown), example: '.git/'
         // neither of above => it is a file and could be in every folder, example: '.htaccess'
-        // both of above => full folder path has to match, example: '/homes/web/filegator/.npm/'
+        // both of above => full folder path has to match, example: '/homes/web/filebrowser/.npm/'
         'filter_entries' => ['Recycle.bin/', 'File System Information/', '.DS_Store', '@eaDir/', '#recycle/'],
     ],
 ```
@@ -37,8 +37,8 @@ Note: if you've made a mistake in configuration file (forgot to close a quote?) 
 ## Additional HTML
 You can add additional html to the head and body like this:
 ```
-        'Filegator\Services\View\ViewInterface' => [
-            'handler' => '\Filegator\Services\View\Adapters\Vuejs',
+        'Filebrowser\Services\View\ViewInterface' => [
+            'handler' => '\Filebrowser\Services\View\Adapters\Vuejs',
             'config' => [
                 'add_to_head' => '<meta name="author" content="something">',
                 'add_to_body' => '<script src="http://example.com/analytics.js"></script>',

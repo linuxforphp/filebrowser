@@ -1,20 +1,21 @@
 <?php
 
 /*
- * This file is part of the FileGator package.
+ * This file is part of the FileBrowser package.
  *
- * (c) Milos Stojanovic <alcalbg@gmail.com>
+ * Copyright 2021, Foreach Code Factory <services@etista.com>
+ * Copyright 2018-2021, Milos Stojanovic <alcalbg@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE file
  */
 
-namespace Filegator\Services\Router;
+namespace Filebrowser\Services\Router;
 
 use FastRoute;
-use Filegator\Container\Container;
-use Filegator\Kernel\Request;
-use Filegator\Services\Auth\AuthInterface;
-use Filegator\Services\Service;
+use Filebrowser\Container\Container;
+use Filebrowser\Kernel\Request;
+use Filebrowser\Services\Auth\AuthInterface;
+use Filebrowser\Services\Service;
 
 class Router implements Service
 {
@@ -57,7 +58,7 @@ class Router implements Service
 
         $routeInfo = $dispatcher->dispatch($http_method, $uri);
 
-        $controller = '\Filegator\Controllers\ErrorController';
+        $controller = '\Filebrowser\Controllers\ErrorController';
         $action = 'notFound';
         $params = [];
 

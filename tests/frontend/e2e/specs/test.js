@@ -1,6 +1,6 @@
 // https://docs.cypress.io/api/introduction/api.html
 Cypress.Cookies.defaults({
-  whitelist: 'filegator' // do not clear this cookie every time
+  whitelist: 'filebrowser' // do not clear this cookie every time
 })
 
 describe('Browser', () => {

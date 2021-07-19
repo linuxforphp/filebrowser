@@ -8,8 +8,8 @@ By default, users are stored in json file. For some use-cases, this is enough. I
 Default handler accepts only file name parameter. This file should be writable by the web server.
 
 ```
-        'Filegator\Services\Auth\AuthInterface' => [
-            'handler' => '\Filegator\Services\Auth\Adapters\JsonFile',
+        'Filebrowser\Services\Auth\AuthInterface' => [
+            'handler' => '\Filebrowser\Services\Auth\Adapters\JsonFile',
             'config' => [
                 'file' => __DIR__.'/private/users.json',
             ],
@@ -46,14 +46,14 @@ VALUES
 At the end, open `configuration.php` and update AuthInterface handler to reflect your database settings:
 
 ```
-        'Filegator\Services\Auth\AuthInterface' => [
-            'handler' => '\Filegator\Services\Auth\Adapters\Database',
+        'Filebrowser\Services\Auth\AuthInterface' => [
+            'handler' => '\Filebrowser\Services\Auth\Adapters\Database',
             'config' => [
                 'driver' => 'mysqli',
                 'host' => 'localhost',
                 'username' => 'root',
                 'password' => 'password',
-                'database' => 'filegator',
+                'database' => 'filebrowser',
             ],
         ],
 ```
@@ -63,8 +63,8 @@ At the end, open `configuration.php` and update AuthInterface handler to reflect
 Replace your current Auth handler in `configuration.php` file like this:
 
 ```
-        'Filegator\Services\Auth\AuthInterface' => [
-            'handler' => '\Filegator\Services\Auth\Adapters\WPAuth',
+        'Filebrowser\Services\Auth\AuthInterface' => [
+            'handler' => '\Filebrowser\Services\Auth\Adapters\WPAuth',
             'config' => [
                 'wp_dir' => '/var/www/my_wordpress_site/',
                 'permissions' => ['read', 'write', 'upload', 'download', 'batchdownload', 'zip'],
@@ -77,7 +77,7 @@ Adjust in the config above:
 - `permissions` is the array of permissions given to each user
 - `private_repos` each user will have its own sub folder, admin will see everything (false/true)
 
-Note: With more recent versions of FileGator you can set `guest_redirection` in your `configuration.php` to redirect logged-out users back to your WP site:
+Note: With more recent versions of FileBrowser you can set `guest_redirection` in your `configuration.php` to redirect logged-out users back to your WP site:
 ```
 'frontend_config' => [
   ...
@@ -91,8 +91,8 @@ Note: With more recent versions of FileGator you can set `guest_redirection` in 
 Replace your current Auth handler in `configuration.php` file like this:
 
 ```
-        'Filegator\Services\Auth\AuthInterface' => [
-            'handler' => '\Filegator\Services\Auth\Adapters\LDAP',
+        'Filebrowser\Services\Auth\AuthInterface' => [
+            'handler' => '\Filebrowser\Services\Auth\Adapters\LDAP',
             'config' => [
                     'private_repos' => false,
                     'ldap_server'=>'ldap://192.168.1.1',
@@ -114,7 +114,7 @@ Replace your current Auth handler in `configuration.php` file like this:
 
 ## Custom Authentication using 3rd party
 
-If you want to use FileGator as a part of another application, you probably already have users stored somewhere else. What you need in this case is to build a new custom Auth adapter that matches the [AuthInterface](https://github.com/filegator/filegator/blob/master/backend/Services/Auth/AuthInterface.php) to connect those two. This new adapter will try to authenticate users in your application and translate each user into filegator [User](https://github.com/filegator/filegator/blob/master/backend/Services/Auth/User.php) object.
+If you want to use FileBrowser as a part of another application, you probably already have users stored somewhere else. What you need in this case is to build a new custom Auth adapter that matches the [AuthInterface](https://github.com/linuxforphp/filebrowser/blob/master/backend/Services/Auth/AuthInterface.php) to connect those two. This new adapter will try to authenticate users in your application and translate each user into filebrowser [User](https://github.com/linuxforphp/filebrowser/blob/master/backend/Services/Auth/User.php) object.
 
 ## API authentication
 

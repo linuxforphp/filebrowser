@@ -3,7 +3,7 @@
 return [
     [
         'route' => [
-            'GET', '/', '\Filegator\Controllers\ViewController@index',
+            'GET', '/', '\Filebrowser\Controllers\ViewController@index',
         ],
         'roles' => [
             'guest', 'user', 'admin',
@@ -13,7 +13,7 @@ return [
     ],
     [
         'route' => [
-            'POST', '/login', '\Filegator\Controllers\AuthController@login',
+            'POST', '/login', '\Filebrowser\Controllers\AuthController@login',
         ],
         'roles' => [
             'guest',
@@ -23,7 +23,7 @@ return [
     ],
     [
         'route' => [
-            'POST', '/logout', '\Filegator\Controllers\AuthController@logout',
+            'POST', '/logout', '\Filebrowser\Controllers\AuthController@logout',
         ],
         'roles' => [
             'guest', 'user', 'admin',
@@ -33,7 +33,7 @@ return [
     ],
     [
         'route' => [
-            'GET', '/getuser', '\Filegator\Controllers\AuthController@getUser',
+            'GET', '/getuser', '\Filebrowser\Controllers\AuthController@getUser',
         ],
         'roles' => [
             'guest', 'user', 'admin',
@@ -43,7 +43,7 @@ return [
     ],
     [
         'route' => [
-            'POST', '/changepassword', '\Filegator\Controllers\AuthController@changePassword',
+            'POST', '/changepassword', '\Filebrowser\Controllers\AuthController@changePassword',
         ],
         'roles' => [
             'user', 'admin',
@@ -53,7 +53,7 @@ return [
     ],
     [
         'route' => [
-            'GET', '/getconfig', '\Filegator\Controllers\ViewController@getFrontendConfig',
+            'GET', '/getconfig', '\Filebrowser\Controllers\ViewController@getFrontendConfig',
         ],
         'roles' => [
             'guest', 'user', 'admin',
@@ -63,18 +63,7 @@ return [
     ],
     [
         'route' => [
-            'POST', '/changedir', '\Filegator\Controllers\FileController@changeDirectory',
-        ],
-        'roles' => [
-            'guest', 'user', 'admin',
-        ],
-        'permissions' => [
-            'read',
-        ],
-    ],
-    [
-        'route' => [
-            'POST', '/getdir', '\Filegator\Controllers\FileController@getDirectory',
+            'POST', '/changedir', '\Filebrowser\Controllers\FileController@changeDirectory',
         ],
         'roles' => [
             'guest', 'user', 'admin',
@@ -85,7 +74,18 @@ return [
     ],
     [
         'route' => [
-            'POST', '/copyitems', '\Filegator\Controllers\FileController@copyItems',
+            'POST', '/getdir', '\Filebrowser\Controllers\FileController@getDirectory',
+        ],
+        'roles' => [
+            'guest', 'user', 'admin',
+        ],
+        'permissions' => [
+            'read',
+        ],
+    ],
+    [
+        'route' => [
+            'POST', '/copyitems', '\Filebrowser\Controllers\FileController@copyItems',
         ],
         'roles' => [
             'guest', 'user', 'admin',
@@ -96,7 +96,7 @@ return [
     ],
     [
         'route' => [
-            'POST', '/moveitems', '\Filegator\Controllers\FileController@moveItems',
+            'POST', '/moveitems', '\Filebrowser\Controllers\FileController@moveItems',
         ],
         'roles' => [
             'guest', 'user', 'admin',
@@ -107,7 +107,7 @@ return [
     ],
     [
         'route' => [
-            'POST', '/renameitem', '\Filegator\Controllers\FileController@renameItem',
+            'POST', '/renameitem', '\Filebrowser\Controllers\FileController@renameItem',
         ],
         'roles' => [
             'guest', 'user', 'admin',
@@ -118,7 +118,7 @@ return [
     ],
     [
         'route' => [
-            'POST', '/zipitems', '\Filegator\Controllers\FileController@zipItems',
+            'POST', '/zipitems', '\Filebrowser\Controllers\FileController@zipItems',
         ],
         'roles' => [
             'guest', 'user', 'admin',
@@ -129,7 +129,7 @@ return [
     ],
     [
         'route' => [
-            'POST', '/unzipitem', '\Filegator\Controllers\FileController@unzipItem',
+            'POST', '/unzipitem', '\Filebrowser\Controllers\FileController@unzipItem',
         ],
         'roles' => [
             'guest', 'user', 'admin',
@@ -140,7 +140,7 @@ return [
     ],
     [
         'route' => [
-            'POST', '/deleteitems', '\Filegator\Controllers\FileController@deleteItems',
+            'POST', '/deleteitems', '\Filebrowser\Controllers\FileController@deleteItems',
         ],
         'roles' => [
             'guest', 'user', 'admin',
@@ -151,7 +151,7 @@ return [
     ],
     [
         'route' => [
-            'POST', '/createnew', '\Filegator\Controllers\FileController@createNew',
+            'POST', '/createnew', '\Filebrowser\Controllers\FileController@createNew',
         ],
         'roles' => [
             'guest', 'user', 'admin',
@@ -162,7 +162,7 @@ return [
     ],
     [
         'route' => [
-            'GET', '/upload', '\Filegator\Controllers\UploadController@chunkCheck',
+            'GET', '/upload', '\Filebrowser\Controllers\UploadController@chunkCheck',
         ],
         'roles' => [
             'guest', 'user', 'admin',
@@ -173,7 +173,7 @@ return [
     ],
     [
         'route' => [
-            'POST', '/upload', '\Filegator\Controllers\UploadController@upload',
+            'POST', '/upload', '\Filebrowser\Controllers\UploadController@upload',
         ],
         'roles' => [
             'guest', 'user', 'admin',
@@ -184,7 +184,7 @@ return [
     ],
     [
         'route' => [
-            'GET', '/download', '\Filegator\Controllers\DownloadController@download',
+            'GET', '/download', '\Filebrowser\Controllers\DownloadController@download',
         ],
         'roles' => [
             'guest', 'user', 'admin',
@@ -195,7 +195,7 @@ return [
     ],
     [
         'route' => [
-            'POST', '/batchdownload', '\Filegator\Controllers\DownloadController@batchDownloadCreate',
+            'POST', '/batchdownload', '\Filebrowser\Controllers\DownloadController@batchDownloadCreate',
         ],
         'roles' => [
             'guest', 'user', 'admin',
@@ -206,7 +206,7 @@ return [
     ],
     [
         'route' => [
-            'GET', '/batchdownload', '\Filegator\Controllers\DownloadController@batchDownloadStart',
+            'GET', '/batchdownload', '\Filebrowser\Controllers\DownloadController@batchDownloadStart',
         ],
         'roles' => [
             'guest', 'user', 'admin',
@@ -218,7 +218,7 @@ return [
     // admins
     [
         'route' => [
-            'GET', '/listusers', '\Filegator\Controllers\AdminController@listUsers',
+            'GET', '/listusers', '\Filebrowser\Controllers\AdminController@listUsers',
         ],
         'roles' => [
             'admin',
@@ -228,7 +228,7 @@ return [
     ],
     [
         'route' => [
-            'POST', '/storeuser', '\Filegator\Controllers\AdminController@storeUser',
+            'POST', '/storeuser', '\Filebrowser\Controllers\AdminController@storeUser',
         ],
         'roles' => [
             'admin',
@@ -238,7 +238,7 @@ return [
     ],
     [
         'route' => [
-            'POST', '/updateuser/{username}', '\Filegator\Controllers\AdminController@updateUser',
+            'POST', '/updateuser/{username}', '\Filebrowser\Controllers\AdminController@updateUser',
         ],
         'roles' => [
             'admin',
@@ -248,7 +248,7 @@ return [
     ],
     [
         'route' => [
-            'POST', '/deleteuser/{username}', '\Filegator\Controllers\AdminController@deleteUser',
+            'POST', '/deleteuser/{username}', '\Filebrowser\Controllers\AdminController@deleteUser',
         ],
         'roles' => [
             'admin',
@@ -258,7 +258,7 @@ return [
     ],
     [
         'route' => [
-            'POST', '/savecontent', '\Filegator\Controllers\FileController@saveContent',
+            'POST', '/savecontent', '\Filebrowser\Controllers\FileController@saveContent',
         ],
         'roles' => [
             'guest', 'user', 'admin',

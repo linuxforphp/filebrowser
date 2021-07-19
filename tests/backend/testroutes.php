@@ -3,7 +3,7 @@
 return [
     [
         'route' => [
-            'GET', '/', '\Filegator\Controllers\ViewController@index',
+            'GET', '/', '\Filebrowser\Controllers\ViewController@index',
         ],
         'roles' => [
             'guest',
@@ -13,7 +13,7 @@ return [
     ],
     [
         'route' => [
-            'POST', '/login', '\Filegator\Controllers\AuthController@login',
+            'POST', '/login', '\Filebrowser\Controllers\AuthController@login',
         ],
         'roles' => [
             'guest',

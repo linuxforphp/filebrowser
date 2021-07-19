@@ -1,4 +1,4 @@
-## Contributing to FileGator
+## Contributing to FileBrowser
 
 Please note we have a code of conduct, please follow it in all your interactions with the project.
 

@@ -1,19 +1,20 @@
 <?php
 
 /*
- * This file is part of the FileGator package.
+ * This file is part of the FileBrowser package.
  *
- * (c) Milos Stojanovic <alcalbg@gmail.com>
+ * Copyright 2021, Foreach Code Factory <services@etista.com>
+ * Copyright 2018-2021, Milos Stojanovic <alcalbg@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE file
  */
 
 namespace Tests\Unit;
 
-use Filegator\Kernel\Request;
-use Filegator\Kernel\Response;
-use Filegator\Services\Auth\AuthInterface;
-use Filegator\Services\Session\SessionStorageInterface;
+use Filebrowser\Kernel\Request;
+use Filebrowser\Kernel\Response;
+use Filebrowser\Services\Auth\AuthInterface;
+use Filebrowser\Services\Session\SessionStorageInterface;
 use Tests\TestCase;
 
 /**

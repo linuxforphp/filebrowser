@@ -1,9 +1,10 @@
 <?php
 
 /*
- * This file is part of the FileGator package.
+ * This file is part of the FileBrowser package.
  *
- * (c) Milos Stojanovic <alcalbg@gmail.com>
+ * Copyright 2021, Foreach Code Factory <services@etista.com>
+ * Copyright 2018-2021, Milos Stojanovic <alcalbg@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE file
  */
@@ -52,7 +53,7 @@ class FeatureTest extends TestCase
         $this->assertOk();
         $this->assertResponseJsonHas([
             'data' => [
-                'app_name' => 'FileGator',
+                'app_name' => 'FileBrowser',
                 'upload_max_size' => 2 * 1024 * 1024,
                 'upload_chunk_size' => 1 * 1024 * 1024,
                 'upload_simultaneous' => 3,

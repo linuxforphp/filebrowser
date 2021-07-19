@@ -8,15 +8,15 @@ return [
     'download_inline' => ['pdf'], // download inline in the browser, array of extensions, use * for all
 
     'frontend_config' => [
-        'app_name' => 'FileGator',
+        'app_name' => 'FileBrowser',
         'app_version' => APP_VERSION,
         'language' => 'english',
-        'logo' => 'https://filegator.io/img/logo.png',
+        'logo' => 'https://linuxforphp.com/img/logo.svg',
         'upload_max_size' => 100 * 1024 * 1024, // 100MB
         'upload_chunk_size' => 1 * 1024 * 1024, // 1MB
         'upload_simultaneous' => 3,
         'default_archive_name' => 'archive.zip',
-        'editable' => ['.txt', '.css', '.js', '.ts', '.html', '.php', '.json', '.md'],
+        'editable' => ['.txt', '.css', '.js', '.ts', '.html', '.php', '.json', '.ini', '.cnf', '.conf', '.env', '.monthly', '.weekly', '.daily', '.hourly', '.minute', '.htaccess'],
         'date_format' => 'YY/MM/DD hh:mm:ss', // see: https://momentjs.com/docs/#/displaying/format/
         'guest_redirection' => '', // useful for external auth adapters
         'search_simultaneous' => 5,
@@ -24,8 +24,8 @@ return [
     ],
 
     'services' => [
-        'Filegator\Services\Logger\LoggerInterface' => [
-            'handler' => '\Filegator\Services\Logger\Adapters\MonoLogger',
+        'Filebrowser\Services\Logger\LoggerInterface' => [
+            'handler' => '\Filebrowser\Services\Logger\Adapters\MonoLogger',
             'config' => [
                 'monolog_handlers' => [
                     function () {
@@ -37,8 +37,8 @@ return [
                 ],
             ],
         ],
-        'Filegator\Services\Session\SessionStorageInterface' => [
-            'handler' => '\Filegator\Services\Session\Adapters\SessionStorage',
+        'Filebrowser\Services\Session\SessionStorageInterface' => [
+            'handler' => '\Filebrowser\Services\Session\Adapters\SessionStorage',
             'config' => [
                 'handler' => function () {
                     $save_path = null; // use default system path
@@ -51,22 +51,22 @@ return [
                 },
             ],
         ],
-        'Filegator\Services\Cors\Cors' => [
-            'handler' => '\Filegator\Services\Cors\Cors',
+        'Filebrowser\Services\Cors\Cors' => [
+            'handler' => '\Filebrowser\Services\Cors\Cors',
             'config' => [
                 'enabled' => APP_ENV == 'production' ? false : true,
             ],
         ],
-        'Filegator\Services\Tmpfs\TmpfsInterface' => [
-            'handler' => '\Filegator\Services\Tmpfs\Adapters\Tmpfs',
+        'Filebrowser\Services\Tmpfs\TmpfsInterface' => [
+            'handler' => '\Filebrowser\Services\Tmpfs\Adapters\Tmpfs',
             'config' => [
                 'path' => __DIR__.'/private/tmp/',
                 'gc_probability_perc' => 10,
                 'gc_older_than' => 60 * 60 * 24 * 2, // 2 days
             ],
         ],
-        'Filegator\Services\Security\Security' => [
-            'handler' => '\Filegator\Services\Security\Security',
+        'Filebrowser\Services\Security\Security' => [
+            'handler' => '\Filebrowser\Services\Security\Security',
             'config' => [
                 'csrf_protection' => true,
                 'csrf_key' => "123456", // randomize this
@@ -74,15 +74,15 @@ return [
                 'ip_denylist' => [],
             ],
         ],
-        'Filegator\Services\View\ViewInterface' => [
-            'handler' => '\Filegator\Services\View\Adapters\Vuejs',
+        'Filebrowser\Services\View\ViewInterface' => [
+            'handler' => '\Filebrowser\Services\View\Adapters\Vuejs',
             'config' => [
                 'add_to_head' => '',
                 'add_to_body' => '',
             ],
         ],
-        'Filegator\Services\Storage\Filesystem' => [
-            'handler' => '\Filegator\Services\Storage\Filesystem',
+        'Filebrowser\Services\Storage\Filesystem' => [
+            'handler' => '\Filebrowser\Services\Storage\Filesystem',
             'config' => [
                 'separator' => '/',
                 'config' => [],
@@ -93,18 +93,18 @@ return [
                 },
             ],
         ],
-        'Filegator\Services\Archiver\ArchiverInterface' => [
-            'handler' => '\Filegator\Services\Archiver\Adapters\ZipArchiver',
+        'Filebrowser\Services\Archiver\ArchiverInterface' => [
+            'handler' => '\Filebrowser\Services\Archiver\Adapters\ZipArchiver',
             'config' => [],
         ],
-        'Filegator\Services\Auth\AuthInterface' => [
-            'handler' => '\Filegator\Services\Auth\Adapters\JsonFile',
+        'Filebrowser\Services\Auth\AuthInterface' => [
+            'handler' => '\Filebrowser\Services\Auth\Adapters\JsonFile',
             'config' => [
                 'file' => __DIR__.'/private/users.json',
             ],
         ],
-        'Filegator\Services\Router\Router' => [
-            'handler' => '\Filegator\Services\Router\Router',
+        'Filebrowser\Services\Router\Router' => [
+            'handler' => '\Filebrowser\Services\Router\Router',
             'config' => [
                 'query_param' => 'r',
                 'routes_file' => __DIR__.'/backend/Controllers/routes.php',

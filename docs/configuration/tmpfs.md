@@ -13,8 +13,8 @@ This service is responsible for managing temporary files. TMP files are created:
 Tmp files are usually removed immediately after the use. For expired files, configurable garbage collection is used:
 
 ```
-        'Filegator\Services\Tmpfs\TmpfsInterface' => [
-            'handler' => '\Filegator\Services\Tmpfs\Adapters\Tmpfs',
+        'Filebrowser\Services\Tmpfs\TmpfsInterface' => [
+            'handler' => '\Filebrowser\Services\Tmpfs\Adapters\Tmpfs',
             'config' => [
                 'path' => __DIR__.'/private/tmp/',
                 'gc_probability_perc' => 10,

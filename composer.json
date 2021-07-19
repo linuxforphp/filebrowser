@@ -1,7 +1,7 @@
 {
-    "name": "filegator/filegator",
-    "description": "Filegator",
-    "license": "MIT",
+    "name": "linuxforphp/filebrowser",
+    "description": "Filebrowser",
+    "license": "Apache-2.0",
     "type": "project",
     "config": {
         "platform": {
@@ -22,13 +22,17 @@
     },
     "authors": [
         {
+            "name": "Foreach Code Factory",
+            "email": "services@etista.com"
+        },
+        {
             "name": "Milos Stojanovic",
             "email": "alcalbg@gmail.com"
         }
     ],
     "autoload": {
         "psr-4": {
-            "Filegator\\": "backend"
+            "Filebrowser\\": "backend"
         }
     },
     "autoload-dev": {

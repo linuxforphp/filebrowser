@@ -1,18 +1,19 @@
 <?php
 
 /*
- * This file is part of the FileGator package.
+ * This file is part of the FileBrowser package.
  *
- * (c) Milos Stojanovic <alcalbg@gmail.com>
+ * Copyright 2021, Foreach Code Factory <services@etista.com>
+ * Copyright 2018-2021, Milos Stojanovic <alcalbg@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE file
  */
 
 namespace Tests\Unit;
 
-use Filegator\Services\Archiver\Adapters\ZipArchiver;
-use Filegator\Services\Storage\Filesystem;
-use Filegator\Services\Tmpfs\Adapters\Tmpfs;
+use Filebrowser\Services\Archiver\Adapters\ZipArchiver;
+use Filebrowser\Services\Storage\Filesystem;
+use Filebrowser\Services\Tmpfs\Adapters\Tmpfs;
 use League\Flysystem\Memory\MemoryAdapter;
 use League\Flysystem\Adapter\NullAdapter;
 use Tests\TestCase;

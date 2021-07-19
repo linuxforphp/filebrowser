@@ -8,7 +8,7 @@ return [
     'download_inline' => ['pdf'],
 
     'frontend_config' => [
-        'app_name' => 'FileGator',
+        'app_name' => 'FileBrowser',
         'language' => 'english',
         'logo' => 'https://via.placeholder.com/263x55.png',
         'upload_max_size' => 2 * 1024 * 1024,
@@ -21,8 +21,8 @@ return [
     ],
 
     'services' => [
-        'Filegator\Services\Logger\LoggerInterface' => [
-            'handler' => '\Filegator\Services\Logger\Adapters\MonoLogger',
+        'Filebrowser\Services\Logger\LoggerInterface' => [
+            'handler' => '\Filebrowser\Services\Logger\Adapters\MonoLogger',
             'config' => [
                 'monolog_handlers' => [
                     function () {
@@ -31,31 +31,31 @@ return [
                 ],
             ],
         ],
-        'Filegator\Services\Session\SessionStorageInterface' => [
-            'handler' => '\Filegator\Services\Session\Adapters\SessionStorage',
+        'Filebrowser\Services\Session\SessionStorageInterface' => [
+            'handler' => '\Filebrowser\Services\Session\Adapters\SessionStorage',
             'config' => [
                 'handler' => function () {
                     return new \Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage();
                 },
             ],
         ],
-        'Filegator\Services\Tmpfs\TmpfsInterface' => [
-            'handler' => '\Filegator\Services\Tmpfs\Adapters\Tmpfs',
+        'Filebrowser\Services\Tmpfs\TmpfsInterface' => [
+            'handler' => '\Filebrowser\Services\Tmpfs\Adapters\Tmpfs',
             'config' => [
                 'path' => TEST_TMP_PATH,
                 'gc_probability_perc' => 10,
                 'gc_older_than' => 60 * 60 * 24 * 2, // 2 days
             ],
         ],
-        'Filegator\Services\View\ViewInterface' => [
-            'handler' => '\Filegator\Services\View\Adapters\Vuejs',
+        'Filebrowser\Services\View\ViewInterface' => [
+            'handler' => '\Filebrowser\Services\View\Adapters\Vuejs',
             'config' => [
                 'add_to_head' => '',
                 'add_to_body' => '',
             ],
         ],
-        'Filegator\Services\Storage\Filesystem' => [
-            'handler' => '\Filegator\Services\Storage\Filesystem',
+        'Filebrowser\Services\Storage\Filesystem' => [
+            'handler' => '\Filebrowser\Services\Storage\Filesystem',
             'config' => [
                 'separator' => '/',
                 'adapter' => function () {
@@ -65,15 +65,15 @@ return [
                 },
             ],
         ],
-        'Filegator\Services\Auth\AuthInterface' => [
+        'Filebrowser\Services\Auth\AuthInterface' => [
             'handler' => '\Tests\MockUsers',
         ],
-        'Filegator\Services\Archiver\ArchiverInterface' => [
-            'handler' => '\Filegator\Services\Archiver\Adapters\ZipArchiver',
+        'Filebrowser\Services\Archiver\ArchiverInterface' => [
+            'handler' => '\Filebrowser\Services\Archiver\Adapters\ZipArchiver',
             'config' => [],
         ],
-        'Filegator\Services\Router\Router' => [
-            'handler' => '\Filegator\Services\Router\Router',
+        'Filebrowser\Services\Router\Router' => [
+            'handler' => '\Filebrowser\Services\Router\Router',
             'config' => [
                 'query_param' => 'r',
                 'routes_file' => __DIR__.'/../../backend/Controllers/routes.php',

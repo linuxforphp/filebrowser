@@ -31,7 +31,7 @@ Available languages:
 - ```swedish```
 - ```japanese```
 
-Please help us translating FileGator to your language by submitting a Pull Request on GitHub.
+Please help us translating FileBrowser to your language by submitting a Pull Request on GitHub.
 
 
 ## How to translate

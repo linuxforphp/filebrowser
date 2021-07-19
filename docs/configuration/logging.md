@@ -9,8 +9,8 @@ Logging is provided trough the powerful [Monolog](https://github.com/Seldaek/mon
 Default handler will use simple `private/logs/app.log` file to store application logs and errors.
 
 ```
-        'Filegator\Services\Logger\LoggerInterface' => [
-            'handler' => '\Filegator\Services\Logger\Adapters\MonoLogger',
+        'Filebrowser\Services\Logger\LoggerInterface' => [
+            'handler' => '\Filebrowser\Services\Logger\Adapters\MonoLogger',
             'config' => [
                 'monolog_handlers' => [
                     function () {

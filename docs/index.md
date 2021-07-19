@@ -1,17 +1,16 @@
-## FileGator
-<a href="https://demo.filegator.io"><img src="https://img.shields.io/badge/Live-Demo-brightgreen.svg?style=flat-square" alt="Live demo"></a>
-<a href="https://github.com/filegator/filegator/actions"><img src="https://github.com/filegator/filegator/workflows/PHP/badge.svg" alt="Build Status PHP"></a>
-  <a href="https://github.com/filegator/filegator/actions"><img src="https://github.com/filegator/filegator/workflows/Node/badge.svg" alt="Build Status Node"></a>
-<a href="https://codecov.io/gh/filegator/filegator"><img src="https://codecov.io/gh/filegator/filegator/branch/master/graph/badge.svg" alt="Code Coverage"></a>
-<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License"></a>
-
+## FileBrowser
+<a href="https://github.com/linuxforphp/filebrowser/actions"><img src="https://github.com/linuxforphp/filebrowser/workflows/PHP/badge.svg?branch=master" alt="Build Status PHP master"></a>
+    <a href="https://github.com/linuxforphp/filebrowser/actions"><img src="https://github.com/linuxforphp/filebrowser/workflows/Node/badge.svg?branch=master" alt="Build Status Node master"></a>
+    <a href="https://codecov.io/gh/linuxforphp/filebrowser"><img src="https://codecov.io/gh/linuxforphp/filebrowser/branch/master/graph/badge.svg?token=X4QTVJLTF0"/></a>
+    <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/Apache-2.0-green.svg" alt="License"></a>
+    
 <br>
 
-[FileGator](https://filegator.io) is a free, [open-source](https://github.com/filegator/filegator), self-hosted web application for managing files and folders.
+[FileBrowser](https://filebrowser.linuxforphp.net) is a free, [open-source](https://github.com/linuxforphp/filebrowser), self-hosted web application for managing files and folders.
 
 You can manage files inside your local repository folder (on your server's hard drive) or connect to other storage adapters (see below).
 
-FileGator has multi-user support so you can have admins and other users managing the files with different access permissions, roles and home folders.
+FileBrowser has multi-user support so you can have admins and other users managing the files with different access permissions, roles and home folders.
 
 All basic file operations are supported: copy, move, rename, create, delete, zip, unzip, download, upload.
 
@@ -50,11 +49,11 @@ At the end, the more people who can see and test a set of code, the more likely 
 
 ## Show your support
 
-- Please star this repository on [GitHub](https://github.com/filegator/filegator/stargazers) if this project helped you!
-- Become a backer or sponsor on [Patreon](https://www.patreon.com/alcalbg).
+- Please star this repository on [GitHub](https://github.com/linuxforphp/filebrowser/stargazers) if this project helped you!
 
 ## License
 
-Copyright (c) 2019 [Milos Stojanovic](https://github.com/alcalbg).
+Copyright 2021, [Foreach Code Factory](https://etista.com/).
+Copyright 2018-2021, [Milos Stojanovic](https://github.com/alcalbg).
 
-This project is MIT licensed.
+This project is Apache-2.0 licensed.

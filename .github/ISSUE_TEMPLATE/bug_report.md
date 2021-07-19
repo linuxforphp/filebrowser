@@ -24,10 +24,10 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Logs**
-If applicable, add relevant FileGator logs entries from ```/private/logs/app.log``` or web server logs.
+If applicable, add relevant FileBrowser logs entries from ```/private/logs/app.log``` or web server logs.
 
 **Environment (please complete the following information):**
- - FileGator Version [e.g. 7.0.0]
+ - FileBrowser Version [e.g. 7.0.0]
  - Server: [e.g. Apache 2.4 on Debian Linux]
  - PHP Version [e.g. PHP 7.3]
  - Browser [e.g. chrome, safari]
