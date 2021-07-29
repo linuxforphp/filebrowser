@@ -11,6 +11,8 @@
                     "lfphp-get --force node.js-10",
                     "npm update -g",
                     "composer self-update",
+                    "pip install --upgrade pip",
+                    "pip install sphinx",
                     "cd /srv/filebrowser",
                     "chmod -R 775 private/",
                     "chmod -R 775 repository/",

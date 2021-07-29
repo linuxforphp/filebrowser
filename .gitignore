@@ -1,15 +1,17 @@
-/node_modules
-/vendor
-/dist/css
-/dist/js
-/dist/main.html
+node_modules
+vendor
+dist/css
+dist/js
+dist/main.html
 
-/configuration.php
+configuration.php
 
-/tests/backend/coverage
-/tests/backend/tmp/repository/*
-/tests/frontend/e2e/videos/
-/tests/frontend/e2e/screenshots/
+tests/backend/coverage
+tests/backend/tmp/repository/*
+tests/frontend/e2e/videos/
+tests/frontend/e2e/screenshots/
+
+docs/_build/*
 
 # Log files
 npm-debug.log*
