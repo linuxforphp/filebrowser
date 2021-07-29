@@ -55,6 +55,7 @@ If you have Docker on your computer, you can run the following commands
 
 ```
 git clone https://github.com/linuxforphp/filebrowser.git
+cd filebrowser
 composer install --ignore-platform-reqs
 vendor/bin/linuxforcomposer docker:run start
 ```
