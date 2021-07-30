@@ -3,7 +3,7 @@
 .. index:: License
 
 ====================
-File Browser License
+FileBrowser License
 ====================
 
     Copyright 2018-2021, Foreach Code Factory.

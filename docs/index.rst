@@ -1,10 +1,10 @@
 .. _IndexAnchor:
 
-Welcome to the File Browser Documentation
+Welcome to the FileBrowser Documentation
 =========================================
 .. image:: /images/logo.png
 
-`File Browser Home Page <https://filebrowser.linuxforphp.net/>`_
+`FileBrowser Home Page <https://filebrowser.linuxforphp.net/>`_
 
 .. toctree::
    :maxdepth: 3
@@ -13,6 +13,7 @@ Welcome to the File Browser Documentation
    introduction
    installation
    accounts
+   configuration_basic
    configuration/*
    translations/*
    development

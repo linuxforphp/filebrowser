@@ -6,7 +6,7 @@ Translations
 
 .. index:: Translations
 
-Language is configured by adjusting the ``language`` variable in your
+The language setting is configured by adjusting the ``language`` variable in the
 ``configuration.php`` file.
 
 Available languages:
@@ -34,8 +34,8 @@ Available languages:
 -  ``swedish``
 -  ``japanese``
 
-Please help us translating FileBrowser to your language by submitting a
-Pull Request on GitHub.
+Please help us in translating the FileBrowser application to your language,
+by submitting a Pull Request on GitHub.
 
 ----------------
 How to Translate
@@ -44,24 +44,24 @@ How to Translate
 .. index:: Translate FileBrowser
 
 First, you must setup the project like described in the :ref:`development`
-section. Default language file is located under
-``frontend/translations/english.js`` You can add more languages in the
+section. The default language file is located under
+``frontend/translations/english.js``. You can add more languages in the
 same folder. Once your language file is in place, it needs to be added
-to ``frontend/mixins/shared.js``. After this, recompile everything with
-``npm run build`` and then you can use it by adjusting the ``language``
-variable in your ``configuration.php`` file.
+to ``frontend/mixins/shared.js`` file. After this, recompile everything with
+``npm run build``, and you will then be able to use it by changing the
+``language`` variable in the ``configuration.php`` file.
 
-You should only translate value on the right, for example:
-
-::
-
-   'Close': 'Schliessen',
-
-Default language file:
+You should only translate the value on the right. For example:
 
 ::
 
-   const data = {
+    'Close': 'Schliessen',
+
+Here is the default language file:
+
+::
+
+    const data = {
      'Selected': 'Selected: {0} of {1}',
      'Uploading files': 'Uploading {0}% of {1}',
      'File size error': '{0} is too large, please upload files less than {1}',
@@ -134,6 +134,6 @@ Default language file:
      'Deleted': 'Deleted',
      'Your file is ready': 'Your file is ready',
      'View': 'View',
-   }
+    }
 
-   export default data
+    export default data

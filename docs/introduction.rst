@@ -1,10 +1,10 @@
 .. _IntroductionAnchor:
 
 ======================
-What is  File Browser?
+What is  FileBrowser?
 ======================
 
-.. index:: File Browser
+.. index:: FileBrowser
 
 `FileBrowser <https://filebrowser.linuxforphp.net>`__ is a free,
 `open-source <https://github.com/linuxforphp/filebrowser>`__,
@@ -13,8 +13,8 @@ self-hosted web application for managing files and folders.
 You can manage files inside your local repository folder (on your
 server’s hard drive) or connect to other storage adapters (see below).
 
-FileBrowser has multi-user support so you can have admins and other
-users managing the files with different access permissions, roles and
+FileBrowser has multi-user support, so you can have administrators and other
+users managing their files with different access permissions, roles and
 home folders.
 
 All basic file operations are supported: copy, move, rename, create,
@@ -32,38 +32,36 @@ Features & Goals
 
 -  Multiple storage adapters (Local, FTP, Amazon S3, Dropbox, DO Spaces,
    Azure Blob and many others via
-   `Flysystem <https://github.com/thephpleague/flysystem>`__)
--  Multiple auth adapters with roles and permissions (Store users in
-   json file, database or use WordPress)
--  Multiple session adapters (Native File, Pdo, Redis, MongoDB,
-   Memcached and others via
-   `Symfony <https://github.com/symfony/symfony/tree/4.4/src/Symfony/Component/HttpFoundation/Session/Storage/Handler>`__)
+   `Flysystem <https://github.com/thephpleague/flysystem>`__),
+-  Multiple authentication adapters with roles and permissions (store users in
+   a json file, database, or use WordPress),
+-  Multiple session adapters (native file, Pdo, Redis, MongoDB,
+   Memcached, and others via
+   `Symfony <https://github.com/symfony/symfony/tree/4.4/src/Symfony/Component/HttpFoundation/Session/Storage/Handler>`__),
 -  Single page front-end (built with
-   `Vuejs <https://github.com/vuejs/vue>`__,
+   `Vue.js <https://github.com/vuejs/vue>`__,
    `Bulma <https://github.com/jgthms/bulma>`__ and
-   `Buefy <https://github.com/buefy/buefy>`__)
+   `Buefy <https://github.com/buefy/buefy>`__),
 -  Chunked uploads (built with
-   `Resumable.js <https://github.com/23/resumable.js>`__)
--  Zip and bulk download support
--  Highly extensible, decoupled and tested code
--  No database required
--  Framework free `™ <https://www.youtube.com/watch?v=L5jI9I03q8E>`__
+   `Resumable.js <https://github.com/23/resumable.js>`__),
+-  Zip and bulk download support,
+-  Highly extensible, decoupled and tested code,
+-  No database required.
 
 --------------------------
 Why Open Source on GitHub?
 --------------------------
 
-There are several reasons why we switched to open source model and
-GitHub.
+There are several reasons why we switched to the open source model.
 
 Basically, we wanted to increase:
 
--  Code quality by bringing more developers on board
--  Code auditability and visibility
--  Security
--  Project lifetime
+-  Code quality by bringing more developers to the project,
+-  Code stability,
+-  Security,
+-  Project lifetime.
 
-At the end, the more people who can see and test a set of code, the more
+At the end, the more people can see and test some code, the more
 likely any flaws will be caught and fixed quickly.
 
 -----------------
