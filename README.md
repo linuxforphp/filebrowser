@@ -9,6 +9,7 @@
     <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/Apache-2.0-green.svg" alt="License"></a>
 </p>
 
+https://filebrowser.linuxforphp.net
 
 ## FileBrowser - Powerful Multi-User File Manager
 
@@ -16,7 +17,7 @@ FileBrowser is a free, open-source, self-hosted web application for managing fil
 
 You can manage files inside your local repository folder (on your server's hard drive) or connect to other storage adapters (see below).
 
-FileBrowser has multi-user support so you can have admins and other users managing files with different access permissions, roles and home folders.
+FileBrowser has multi-user support, so you can have administrators and other users managing their files with different access permissions, roles and home folders.
 
 All basic file operations are supported: copy, move, rename, edit, create, delete, preview, zip, unzip, download, upload.
 
@@ -24,37 +25,63 @@ If allowed, users can download multiple files or folders at once.
 
 File upload supports drag&drop, progress bar, pause and resume. Upload is chunked so you should be able to upload large files regardless of your server configuration.
 
-## Typical use cases
-- share a folder with colleagues, your team, friends or family
-- give students access to upload their work
-- allow workers to upload field data / docs / images
-- use as cloud backup
-- manage cdn with multiple people
-- use as ftp/sftp replacement
-- manage s3 or other 3rd party cloud storage
-- use to quickly zip and download remote files
+## Typical Use Cases
+- Share a folder with colleagues, your team, friends or family,
+- Give students access to upload their work,
+- Allow workers to upload field data / docs / images,
+- Use as cloud backup,
+- Manage cdn with multiple people,
+- Use as ftp/sftp replacement,
+- Manage s3 or other 3rd party cloud storage,
+- Use to quickly zip and download remote files.
+
+## Documentation
+[Check out the documentation](https://filebrowser.linuxforphp.net/documentation) here:
+
+https://filebrowser.linuxforphp.net/documentation
 
 ## Features & Goals
-- Multiple storage adapters (Local, FTP, Amazon S3, Dropbox, DO Spaces, Azure Blob and many others via [Flysystem](https://github.com/thephpleague/flysystem))
-- Multiple auth adapters with roles and permissions (Store users in json file, database or use WordPress)
-- Multiple session adapters (Native File, Pdo, Redis, MongoDB, Memcached and others via [Symfony](https://github.com/symfony/symfony/tree/4.4/src/Symfony/Component/HttpFoundation/Session/Storage/Handler))
-- Single page front-end (built with [Vuejs](https://github.com/vuejs/vue), [Bulma](https://github.com/jgthms/bulma) and [Buefy](https://github.com/buefy/buefy))
-- Chunked uploads (built with [Resumable.js](https://github.com/23/resumable.js))
-- Zip and bulk download support
-- Highly extensible, decoupled and tested code
-- No database required
+- Multiple storage adapters (Local, FTP, Amazon S3, Dropbox, DO Spaces, Azure Blob and many others via [Flysystem](https://github.com/thephpleague/flysystem)),
+- Multiple authentication adapters with roles and permissions (store users in a json file, database, or use WordPress),
+- Multiple session adapters (native file, Pdo, Redis, MongoDB, Memcached, and others via [Symfony](https://github.com/symfony/symfony/tree/4.4/src/Symfony/Component/HttpFoundation/Session/Storage/Handler)),
+- Single page front-end (built with [Vue.js](https://github.com/vuejs/vue), [Bulma](https://github.com/jgthms/bulma) and [Buefy](https://github.com/buefy/buefy)),
+- Chunked uploads (built with [Resumable.js](https://github.com/23/resumable.js)),
+- Zip and bulk download support,
+- Highly extensible, decoupled and tested code,
+- No database required.
 
 ## Minimum Requirements
 - PHP 7.2.5+ (with php-zip extension)
 
-## Project setup for development (Linux)
+## Download Pre-Compiled Builds
+Pre-compiled builds are created for non-developers.
+With this version of the FileBrowser,
+the front end code (HTML, CSS and Javascript) is already pre-compiled for you, and the source
+code is removed, so that the final archive file contains only what is required
+to run the application on your server.
+
+-  Download the [latest release](https://filebrowser.linuxforphp.net/download),
+-  Unzip the files, and upload them to your PHP server,
+-  Make sure your web server can read and write to the `filebrowser/repository/` and `filebrowser/private/` folders,
+-  Set the website document root to the `filebrowser/dist/` directory (this is also known as ‘public’ folder),
+-  Visit the web page, and if something goes wrong, please check `filebrowser/private/logs/app.log`,
+-  Login with default credentials `admin/admin123`,
+-  Change default admin’s password.
+
+NOTE: For security reasons, the ``/dist`` folder is the ONLY folder you want to be
+exposed to the Web. Everything else should be outside of your web
+root, this way people can’t access any of your important files through
+the Web browser.
+
+## Project Setup for Development (Linux)
 
 You must have `git`, `php`, `npm`, and `composer` installed.
 
-If you have Docker on your computer, you can run the following commands
+If you have `Docker` and `Linux for Composer` (https://github.com/linuxforphp/linuxforcomposer) on your computer, you can start the container with the following command:
 
 ```
 git clone https://github.com/linuxforphp/filebrowser.git
+cd filebrowser
 composer install --ignore-platform-reqs
 vendor/bin/linuxforcomposer docker:run start
 ```
@@ -78,7 +105,16 @@ npm install
 npm run build
 ```
 
-## Run tests & static analysis
+## Compiles and Hot Reloads
+
+The following command will launch the back end and the front end of the application on ports 8081 and 8080 respectively:
+
+```
+npm run serve
+```
+Once everything is ready visit: `http://localhost:8080`
+
+## Run Tests & Static Analysis
 
 Testing requires xdebug, php-zip and sqlite php extensions.
 
@@ -91,9 +127,12 @@ npm run e2e
 
 ## Deployment
 
-Set the website document root to `/dist` directory. This is also known as 'public' folder.
+Set the website document root to the ``/dist`` directory. This is also known as the ‘public’ folder.
 
-NOTE: For security reasons `/dist` is the ONLY folder you want to be exposed through the web. Everything else should be outside of your web root, this way people can’t access any of your important files through the browser.
+NOTE: For security reasons, the ``/dist`` folder is the ONLY folder you want to be
+exposed to the Web. Everything else should be outside of your web
+root. This way, people won't be able to access any of your important files through
+the Web browser.
 
 ## Security
 

@@ -1,0 +1,32 @@
+.. _TmpfsAnchor:
+
+=============================
+Temporary File System Service
+=============================
+
+.. index:: Temporary file system service
+
+This service is responsible for managing temporary files. TMP files are
+created:
+
+-  When uploading files, chunks are stored in the TMP folder before
+   merging and moving them to the final storage destination,
+-  When creating and extracting archives (zip files),
+-  When downloading multiple files, they are copied into the TMP folder
+   before zipping.
+
+Tmp files are usually removed immediately after their use. For expired
+files, configurable garbage collection is used:
+
+::
+
+    'Filebrowser\Services\Tmpfs\TmpfsInterface' => [
+       'handler' => '\Filebrowser\Services\Tmpfs\Adapters\Tmpfs',
+       'config' => [
+           'path' => __DIR__.'/private/tmp/',
+           'gc_probability_perc' => 10,
+           'gc_older_than' => 60 * 60 * 24 * 2, // 2 days
+       ],
+    ],
+
+.. note:: if you want to use this script as a stateless app or in any kind of multi-node environment, you must mount a single shared TMP folder for all the instances. You can solve this problem with `Amazon Elastic File System <https://aws.amazon.com/efs/>`__, or a similar approach.
