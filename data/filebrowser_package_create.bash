@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # IMPORTANT: CHANGE THE LINUXFORCOMPOSER MOUNT POINT TO /srv/filebrowser
-export FILEBROWSER_PKG_VERSION=8.0.0
+export FILEBROWSER_PKG_VERSION=8.0.1
 tar -C /srv --exclude='filebrowser/.github' \
 --exclude='filebrowser/.git' \
 --exclude='filebrowser/.gitignore' \
