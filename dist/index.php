@@ -60,6 +60,29 @@ use Filebrowser\Kernel\Response;
 use Filebrowser\Kernel\StreamedResponse;
 
 $baseConfig = require APP_ROOT_DIR . DIR_SEP . 'configuration.php';
+
+if (isset($baseConfig['storage']['driver']['fastzip']) && $baseConfig['storage']['driver']['fastzip']) {
+    if (!file_exists(APP_ROOT_DIR . DIR_SEP . 'private' . DIR_SEP . 'tmp' . DIR_SEP . 'zip_path.txt')) {
+        $handle = popen('whereis zip | awk \'{print $2}\'', 'r');
+        $read = fread($handle, 2096);
+        $zipPath = trim($read);
+        pclose($handle);
+        is_executable($zipPath) || die('To use the "fastzip" option, you must have "zip" and "unzip" installed on the Unix/Linux server.');
+
+        file_put_contents(APP_ROOT_DIR . DIR_SEP . 'private' . DIR_SEP . 'tmp' . DIR_SEP . 'zip_path.txt', trim($read));
+    }
+
+    if (!file_exists(APP_ROOT_DIR . DIR_SEP . 'private' . DIR_SEP . 'tmp' . DIR_SEP . 'unzip_path.txt')) {
+        $handle = popen('whereis unzip | awk \'{print $2}\'', 'r');
+        $read = fread($handle, 2096);
+        $unzipPath = trim($read);
+        pclose($handle);
+        is_executable($unzipPath) || die('To use the "fastzip" option, you must have "zip" and "unzip" installed on the Unix/Linux server.');
+
+        file_put_contents(APP_ROOT_DIR . DIR_SEP . 'private' . DIR_SEP . 'tmp' . DIR_SEP . 'unzip_path.txt', trim($read));
+    }
+}
+
 $servicesConfig = require APP_ROOT_DIR . DIR_SEP . 'config' . DIR_SEP . 'services.config.php';
 
 $config = new Config(
