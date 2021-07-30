@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 8.0.1 - 2021-07-30
+
+* Adds a check for the availability of the 'zip' and 'unzip' binaries when using the 'fastzip' option.
+* Updates the project's package creation script.
+* Updates the end-user documentation.
+
 ## 8.0.0 - 2021-07-19
 
 * Adds new proxy methods in the FileController and the DownloadController.
