@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 8.0.2 - 2021-08-02
+
+* Updates the project's package creation script.
+
 ## 8.0.1 - 2021-07-30
 
 * Adds a check for the availability of the 'zip' and 'unzip' binaries when using the 'fastzip' option.
