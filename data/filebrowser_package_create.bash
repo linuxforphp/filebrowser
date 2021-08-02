@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # IMPORTANT: SET THE LINUXFORCOMPOSER MOUNT POINT TO /srv/filebrowser
-export FILEBROWSER_PKG_VERSION=8.0.1
+export FILEBROWSER_PKG_VERSION=8.0.2
 tar -C /srv \
 --exclude='filebrowser/.env.local' \
 --exclude='filebrowser/.env.production' \

@@ -31,7 +31,7 @@ if (! defined('APP_ROOT_DIR')) {
 }
 
 if (! defined('APP_VERSION')) {
-    define('APP_VERSION', '8.0.1');
+    define('APP_VERSION', '8.0.2');
 }
 
 if (version_compare(PHP_VERSION, '7.2.5', '<')) {
