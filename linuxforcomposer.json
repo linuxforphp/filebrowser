@@ -5,7 +5,7 @@
         "image": {
             "linuxforcomposer": {
                 "php-versions": [
-                    "7.4"
+                    "8.0"
                 ],
                 "script": [
                     "lfphp-get --force node.js-10",
