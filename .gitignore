@@ -1,5 +1,6 @@
 node_modules
 vendor
+vendor.*
 dist/css
 dist/js
 dist/main.html
