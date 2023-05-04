@@ -75,6 +75,7 @@ const data = {
   'Download permission': 'Download',
   'Guest': 'Guest',
   'Show hidden': 'Show hidden',
+  'Large archive': 'Large archive file. The file will be ready soon. Please refresh the page in a few minutes...'
 }
 
 export default data

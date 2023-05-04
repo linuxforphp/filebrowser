@@ -485,7 +485,11 @@ export default {
             })
             .catch(error => {
               this.isLoading = false
-              this.handleError(error)
+              if (error.response.status === 500) {
+                this.handleLargeArchive()
+              } else {
+                this.handleError(error)
+              }
             })
           this.checked = []
         }
