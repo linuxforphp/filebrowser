@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 8.1.0 - 2023-05-04
+
+* Updates the dependencies for use with PHP 8.0+.
+
 ## 8.0.3 - 2023-05-04
 
 * Fixes a front end issue with large zip files.
