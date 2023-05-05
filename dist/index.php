@@ -31,11 +31,11 @@ if (! defined('APP_ROOT_DIR')) {
 }
 
 if (! defined('APP_VERSION')) {
-    define('APP_VERSION', '8.0.3');
+    define('APP_VERSION', '8.1.0');
 }
 
-if (version_compare(PHP_VERSION, '7.2.5', '<')) {
-    die('Minimum requirement is PHP 7.2.5 You are using: ' . PHP_VERSION);
+if (version_compare(PHP_VERSION, '8.0.0', '<')) {
+    die('Minimum requirement is PHP 8.0.0 You are using: ' . PHP_VERSION);
 }
 
 if (! is_writable(APP_ROOT_DIR . DIR_SEP . 'private' . DIR_SEP . 'logs')) {
