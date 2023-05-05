@@ -12,7 +12,8 @@ Minimum Requirements
 
 .. index:: Requirements
 
--  PHP 7.2.5+ (with php-zip extension)
+- FileBrowser 8.1.0: PHP 8.0 - 8.2 (with php-zip extension)
+- FileBrowser 8.0.3: PHP 7.2 - 7.4 (with php-zip extension)
 
 -----------------------------
 Download a Pre-Compiled Build
