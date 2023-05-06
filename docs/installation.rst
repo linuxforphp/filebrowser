@@ -58,7 +58,7 @@ this into the shell:
     apt install -y wget unzip php apache2 libapache2-mod-php php-zip
 
     cd /var/www/
-    wget https://filebrowser.linuxforphp.com/files/filebrowser_latest.zip
+    wget -O filebrowser_latest.zip https://filebrowser.linuxforphp.net/files/filebrowser_latest.zip
     unzip filebrowser_latest.zip && rm filebrowser_latest.zip
 
     chown -R www-data:www-data filebrowser/

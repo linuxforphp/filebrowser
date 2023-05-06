@@ -140,7 +140,7 @@ If you discover any security related issues, please email us at services@etista.
 
 ## License
 
-Copyright 2021 [Foreach Code Factory](https://etista.com/).
+Copyright 2021-2023 [LfPHP Services](https://linuxforphp.net/).
 Copyright 2019 [Milos Stojanovic](https://github.com/alcalbg). MIT License.
 
 This project is licensed under the Terms of the Apache 2.0 license.

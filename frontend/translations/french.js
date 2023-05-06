@@ -75,6 +75,7 @@ const data = {
   'Download permission': 'Télécharger',
   'Guest': 'Guest',
   'Show hidden': 'Afficher masqué',
+  'Large archive': 'Fichier compressé massif. Le fichier sera disponible bientôt. Veuillez rafraîchir le contenu de cette page dans quelques minutes...'
 }
 
 export default data

@@ -3,7 +3,7 @@
 /*
  * This file is part of the FileBrowser package.
  *
- * Copyright 2021, Foreach Code Factory <services@linuxforphp.com>
+ * Copyright 2021, LfPHP Services <services@linuxforphp.com>
  * Copyright 2018-2021, Milos Stojanovic <alcalbg@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
@@ -31,7 +31,7 @@ if (! defined('APP_ROOT_DIR')) {
 }
 
 if (! defined('APP_VERSION')) {
-    define('APP_VERSION', '8.0.2');
+    define('APP_VERSION', '8.0.3');
 }
 
 if (version_compare(PHP_VERSION, '7.2.5', '<')) {

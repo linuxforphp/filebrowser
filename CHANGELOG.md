@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 8.0.3 - 2023-05-04
+
+* Fixes a front end issue with large zip files.
+
 ## 8.0.2 - 2021-08-02
 
 * Updates the project's package creation script.

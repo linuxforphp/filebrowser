@@ -140,6 +140,15 @@ const funcs = {
         duration: 5000,
       })
     },
+    handleLargeArchive() {
+      this.checkUser()
+
+      this.$toast.open({
+        message: this.lang('Large archive'),
+        type: 'is-success',
+        duration: 10000,
+      })
+    },
     getDownloadLink(path) {
       return Vue.config.baseURL+'/download&path='+encodeURIComponent(Base64.encode(path))
     },
