@@ -28,7 +28,7 @@
             </exclude>
         </whitelist>
     </filter>
-   <logging>
+   <!-- <logging>
         <log
             type="coverage-html"
             target="tests/backend/coverage"
@@ -43,6 +43,6 @@
             showUncoveredFiles="true"
             showOnlySummary="true"
         />
-    </logging>
+    </logging> -->
 </phpunit>
 

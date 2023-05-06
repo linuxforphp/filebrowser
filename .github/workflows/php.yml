@@ -10,7 +10,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php-version: ['7.2', '7.3', '7.4', '8.0']
+        php-version: ['8.0', '8.1', '8.2']
 
     steps:
     - name: Checkout
@@ -23,9 +23,6 @@ jobs:
         extensions: mbstring, zip, sqlite3, filter
         coverage: xdebug
 
-    - name: Clear Composer Lock File
-      run: rm composer.lock
-
     - name: Install Dependencies
       run: composer install --no-interaction
 
@@ -33,10 +30,4 @@ jobs:
       run: cp configuration_sample.php configuration.php
 
     - name: Execute Tests
-      run: XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-clover=coverage.xml
-
-    - name: Upload Coverage to Codecov
-      uses: codecov/codecov-action@v1
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        file: ./coverage.xml
+      run: vendor/bin/phpunit

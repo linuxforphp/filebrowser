@@ -5,7 +5,6 @@
 <p align="center">
     <a href="https://github.com/linuxforphp/filebrowser/actions"><img src="https://github.com/linuxforphp/filebrowser/workflows/PHP/badge.svg?branch=master" alt="Build Status PHP master"></a>
     <a href="https://github.com/linuxforphp/filebrowser/actions"><img src="https://github.com/linuxforphp/filebrowser/workflows/Node/badge.svg?branch=master" alt="Build Status Node master"></a>
-    <a href="https://codecov.io/gh/linuxforphp/filebrowser"><img src="https://codecov.io/gh/linuxforphp/filebrowser/branch/master/graph/badge.svg?token=X4QTVJLTF0"/></a>
     <a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/Apache-2.0-green.svg" alt="License"></a>
 </p>
 
@@ -51,7 +50,8 @@ https://filebrowser.linuxforphp.net/documentation
 - No database required.
 
 ## Minimum Requirements
-- PHP 7.2.5+ (with php-zip extension)
+- FileBrowser 8.1.0: PHP 8.0 - 8.2 (with php-zip extension)
+- FileBrowser 8.0.3: PHP 7.2 - 7.4 (with php-zip extension)
 
 ## Download Pre-Compiled Builds
 Pre-compiled builds are created for non-developers.
